@@ -1,0 +1,16 @@
+
+    <h1>Signup!</h1>
+
+    <%= form_for(@user, url: '/signup') do |user_form| %>
+      <%= user_form.label("Name") %>
+      <%= user_form.text_field(:name) %><br>
+      <%= user_form.label("Email") %>
+      <%= user_form.email_field(:email) %><br>
+      <%= user_form.label("Zipcode") %>
+      <%= user_form.text_field(:location) %><br>
+      <%= user_form.label("Password") %>
+      <%= user_form.password_field(:password) %><br>
+      <%= user_form.label("Confirm Password") %>
+      <%= user_form.password_field(:password_confirmation) %><br>
+      <%= user_form.submit "Submit" %>
+    <% end %>

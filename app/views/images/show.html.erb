@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Watchman</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <%= stylesheet_link_tag "application", media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <style>
+      .bs-example{
+          margin: 20px;
+      }
+  </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="carousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <% @user.images.each_with_index do |image, i| %>
+            <li data-target="#carousel" data-slide-to="<%= i %>" class="<%= 'active' if i == 0 %>"></li>
+          <% end %>
+        </ol>
+        <div class="carousel-inner">
+          <% @user.images.each_with_index do |image, i| %>
+            <div class="carousel-item <%= 'active' if i == 0 %>">
+              <img src=<%="#{image["url"]}"%> alt=<%="#{image["public_id"]}"%> width="450" height="700">
+              <div class="d-none d-lg-block">
+                <div class="slide-box">
+                <h3><%= "#{@user.name}" %>'s Current Vehicles</h3>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+        </div>
+      </div>
+    </div>
+    <% if false %>
+     <%=yield%>
+    <% end %>
+  </body>
+</html
