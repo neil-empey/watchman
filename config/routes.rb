@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   get '/dashboard' => 'sessions#github'
   get '/vehicles', to: 'vehicles#show'
+  get '/images' => "images#show"
   get '/reports/:id', to: 'reports#index'
 
   resources :users do

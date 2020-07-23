@@ -25,10 +25,10 @@
         <div class="carousel-inner">
           <% @user.images.each_with_index do |image, i| %>
             <div class="carousel-item <%= 'active' if i == 0 %>">
-              <img src=<%="#{image["url"]}"%> alt=<%="#{image["public_id"]}"%> width="450" height="700">
+              <img src=<%="#{image["url"]}"%> alt=<%="#{image["public_id"]}"%> width="350" height="450">
               <div class="d-none d-lg-block">
                 <div class="slide-box">
-                <h3><%= "#{@user.name}" %>'s Current Vehicles</h3>
+                <h3><%= "#{@user.name}" %>'s Current Suspects</h3>
               </div>
             </div>
           <% end %>

@@ -4,5 +4,6 @@ class Report < ApplicationRecord
   has_many :images
   has_many :comments, through: :users
 
-  
+  def create
+  end
 end

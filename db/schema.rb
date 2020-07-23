@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_21_203824) do
+ActiveRecord::Schema.define(version: 2020_07_23_064006) do
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
@@ -50,7 +50,6 @@ ActiveRecord::Schema.define(version: 2020_07_21_203824) do
     t.string "rightEyeBrowRight"
     t.string "rightEyeBrowUp"
     t.string "leftEyeLeft"
-    t.string "leftEyeRightleftEyeUp"
     t.string "leftEyeDown"
     t.string "rightEyeLeft"
     t.string "rightEyeRight"
@@ -75,6 +74,8 @@ ActiveRecord::Schema.define(version: 2020_07_21_203824) do
     t.integer "report_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "leftEyeRight"
+    t.string "leftEyeUp"
     t.index ["report_id"], name: "index_images_on_report_id"
     t.index ["user_id"], name: "index_images_on_user_id"
   end

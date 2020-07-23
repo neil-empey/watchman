@@ -1,6 +1,7 @@
 class ImagesController < ApplicationController
   layout 'application'
 
+
     def new
       @image = Image.new
       @user = current_user
@@ -15,7 +16,7 @@ class ImagesController < ApplicationController
     end
 
     def show
-      @image = Image.find(params[:id])
+      @user = current_user 
     end
 
     def edit
@@ -23,6 +24,7 @@ class ImagesController < ApplicationController
 
     def create
       Image.add(current_user.id)
+      redirect_to '/images'
     end
 
     def update
