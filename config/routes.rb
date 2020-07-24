@@ -18,20 +18,20 @@ Rails.application.routes.draw do
   get '/dashboard' => 'sessions#github'
   get '/vehicles', to: 'vehicles#show'
   get '/images' => "images#show"
-  get '/reports/:id', to: 'reports#index'
+
 
   resources :users do
-    resources :reports, only: [:new, :create, :index]
+    resources :reports, only: [:new, :index]
     end
 
   resources :reports do
-    resources :comments, only: [:new, :create, :index]
+    resources :comments, only: [:new]
     end
 
-  resources :neighborhoods
-  resources :reports
-  resources :images, only: [:new, :create, :show]
-  resources :vehicles, only: [:new, :create, :show]
-  resources :users
+  resources :neighborhoods do
+    resources :users, only: [:index]
+    end
+
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
