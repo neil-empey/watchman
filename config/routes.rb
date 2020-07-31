@@ -15,9 +15,13 @@ Rails.application.routes.draw do
   get '/auth/auth0/callback' => 'auth0#callback'
   get '/auth/failure' => 'auth0#failure'
 
+  get 'vehicles/new' => 'vehicles#new'
+  post 'vehicles' => 'vehicles#create'
+
   get '/dashboard' => 'sessions#github'
-  get '/vehicles', to: 'vehicles#show'
-  get '/images' => "images#show"
+
+  get '/images/new' => 'images#new'
+  post '/images' => 'images#create'
 
 
   resources :users do

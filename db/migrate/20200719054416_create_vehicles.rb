@@ -8,7 +8,7 @@ class CreateVehicles < ActiveRecord::Migration[6.0]
       t.string :color
       t.text :background
       t.belongs_to :user
-      t.belongs_to :report, null: false, foreign_key: true
+      t.belongs_to :report, null: true, foreign_key: false
 
       t.timestamps
     end

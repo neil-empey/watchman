@@ -48,7 +48,9 @@ class Vehicle < ApplicationRecord
         response = HTTParty.post("https://api.carnet.ai/v2/mmg/detect", headers: headers, body: body)
         response = response.body
         result = JSON.parse(response)
-        data_carnet << result["detections"][0]["mmg"]
+          if result["detections"].length > 0
+            data_carnet << result["detections"][0]["mmg"]
+          end
 
       data["vehicles"] = data_v
       data["ocr"] = data_ocr
@@ -60,15 +62,23 @@ class Vehicle < ApplicationRecord
 
   def self.add(current_user)
       @info = Vehicle.get_data(current_user)
+
       (0...@info["vehicles"].length).each do |i|
         carnet = @info["carnet"][i][0]
         auto = @info["vehicles"][i]
         ocr = @info["ocr"][i]
 
-        @report = Report.create(:user => current_user)
-        @new_vehicle = Vehicle.create(:make => carnet["make_name"], :model => carnet["model_name"], :year => carnet["years"], :plate => ocr, :color => "", :background => "", :user_id => current_user.id, :url => auto["url"], :public_id => auto["public_id"], :report => @report)
+
+
+        if carnet == nil
+          @new_vehicle = Vehicle.create(:make => "undetermined", :model => "undetermined", :year => "undetermined", :plate => ocr, :color => "", :background => "", :user_id => current_user.id, :url => auto["url"], :public_id => auto["public_id"], :report_id => nil)
+        else
+
+          @new_vehicle = Vehicle.create(:make => carnet["make_name"], :model => carnet["model_name"], :year => carnet["years"], :plate => ocr, :color => "", :background => "", :user_id => current_user.id, :url => auto["url"], :public_id => auto["public_id"], :report_id => nil)
+        end
+      end
         @new_vehicle.save
-    end
+
   end
 
   def create

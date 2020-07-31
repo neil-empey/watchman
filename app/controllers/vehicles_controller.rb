@@ -1,5 +1,5 @@
 class VehiclesController < ApplicationController
-  
+
 
 
   def index
@@ -20,6 +20,6 @@ class VehiclesController < ApplicationController
 
   def create
     Vehicle.add(current_user)
-    redirect_to '/vehicles'
+    redirect_to "/users/#{current_user.id}"
   end
 end

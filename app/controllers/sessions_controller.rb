@@ -25,8 +25,8 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
-      flash[:error] = "Invalid credentials. Please check your name and password."
-      redirect_to 'signin'
+      flash[:alert] = "Invalid credentials. Please check your name and password."
+      redirect_to '/'
     end
   end
 

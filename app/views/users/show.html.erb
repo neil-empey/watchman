@@ -1,2 +1,10 @@
 
+
+  <%@user = current_user%>
+  <h2>You currently have <%= @user.vehicles.length %> suspect vehicles and
+  <%= @user.images.length %> suspect/crime images.</h2><br><br>
+
+
+
+
     <%= button_to "Logout", '/logout', method: :post%>

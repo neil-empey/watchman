@@ -16,7 +16,7 @@ class ImagesController < ApplicationController
     end
 
     def show
-      @user = current_user 
+      @user = current_user
     end
 
     def edit
@@ -24,7 +24,7 @@ class ImagesController < ApplicationController
 
     def create
       Image.add(current_user.id)
-      redirect_to '/images'
+      redirect_to "/users/#{current_user.id}"
     end
 
     def update

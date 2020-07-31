@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_24_063152) do
+ActiveRecord::Schema.define(version: 2020_07_31_185701) do
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
@@ -71,12 +71,11 @@ ActiveRecord::Schema.define(version: 2020_07_24_063152) do
     t.string "compare_result"
     t.string "label"
     t.integer "user_id", null: false
-    t.integer "report_id", null: false
+    t.integer "report_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "leftEyeRight"
     t.string "leftEyeUp"
-    t.index ["report_id"], name: "index_images_on_report_id"
     t.index ["user_id"], name: "index_images_on_user_id"
   end
 
@@ -93,7 +92,7 @@ ActiveRecord::Schema.define(version: 2020_07_24_063152) do
     t.string "telephone_number"
     t.string "incident_date"
     t.text "summary"
-    t.integer "user_id", null: false
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "suspect_data"
@@ -119,20 +118,17 @@ ActiveRecord::Schema.define(version: 2020_07_24_063152) do
     t.string "color"
     t.text "background"
     t.integer "user_id"
-    t.integer "report_id", null: false
+    t.integer "report_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "year"
     t.string "url"
     t.string "public_id"
-    t.index ["report_id"], name: "index_vehicles_on_report_id"
     t.index ["user_id"], name: "index_vehicles_on_user_id"
   end
 
   add_foreign_key "comments", "users"
-  add_foreign_key "images", "reports"
   add_foreign_key "images", "users"
   add_foreign_key "reports", "users"
   add_foreign_key "users", "neighborhoods"
-  add_foreign_key "vehicles", "reports"
 end
