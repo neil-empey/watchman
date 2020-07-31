@@ -24,8 +24,10 @@ Rails.application.routes.draw do
   post '/images' => 'images#create'
 
 
+
+
   resources :users do
-    resources :reports, only: [:new, :index]
+    resources :reports, only: [:show, :index]
     end
 
   resources :reports do

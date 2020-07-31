@@ -1,5 +1,4 @@
 class Vehicle < ApplicationRecord
-  belongs_to :report
   belongs_to :user
 
   require 'ocr_space'
@@ -78,7 +77,6 @@ class Vehicle < ApplicationRecord
         end
       end
         @new_vehicle.save
-
   end
 
   def create
