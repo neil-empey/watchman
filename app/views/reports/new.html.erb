@@ -5,7 +5,9 @@
     <%= f.input :last_name, label: 'Last Name', error: 'last name required' %>
     <%= f.input :address, label: 'Address', error: 'address required' %>
     <%= f.input :telephone_number, label: 'Telephone Number', error: 'telephone number required' %>
-    <%= f.input :incident_date, label: 'Incident Date', error: 'incident date required' %>
+    <%= f.input :incident_date, label: 'Incident Date',  as: :date, start_year: Date.today.year - 90,
+                              end_year: Date.today.year, discard_day: false,
+                              order: [:month, :day, :year] %> 
     <%= f.input :summary, label: 'Please describe event, loss, damage' %>
     <%= f.input :suspect_data, label: 'Select Suspects', as: :check_boxes, collection: @user.images.collect {|pic| pic.url} %>
     <%= f.input :vehicle_data, label: 'Select Vehicles', as: :check_boxes, collection: @user.vehicles.collect {|car| car.url} %>

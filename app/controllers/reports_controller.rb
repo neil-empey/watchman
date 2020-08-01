@@ -14,6 +14,7 @@ class ReportsController < ApplicationController
   end
 
   def show
+    @report = Report.find_by_id(params["id"])
   end
 
   def create
@@ -25,7 +26,7 @@ class ReportsController < ApplicationController
     @report.destroy
     redirect_to "/users/#{current_user.id}", notice: 'Report destroyed'
   end
-  
+
   private
 
   def report_create(params)

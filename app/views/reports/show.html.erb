@@ -1,1 +1,151 @@
-<% @user = User.find_by_id(params[:id]) %>
+<!DOCTYPE html>
+<!-- Template by html.am -->
+<html>
+ <head>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <title>3 Column, Right Menus</title>
+   <style type="text/css">
+
+     body{
+       margin:0;
+       padding:0;
+       font-family: Sans-Serif;
+       line-height: 1.5em;
+     }
+
+     #header {
+       background: #0000A0;
+       height: 100px;
+     }
+
+     #header h1 {
+       margin: 0;
+       padding-top: 15px;
+     }
+
+     #mainwrapper {
+       overflow: hidden;
+     }
+
+     #contentwrapper{
+       float: left;
+       width: 100%;
+     }
+
+     #content {
+       margin-right: 460px; /* Width of '#rightmenu' and '#leftmenu' combined. */
+       padding-bottom: 10010px;
+       margin-bottom: -10000px;
+     }
+
+     #leftmenu {
+       float: left;
+       width: 250px;
+       margin-left: -460px; /* Width of '#rightmenu' and '#leftmenu' combined. */
+       padding-bottom: 10010px;
+       margin-bottom: -10000px;
+       background: #737CA1;
+     }
+
+     #rightmenu {
+       float: left;
+       width: 210px;
+       margin-left: -210px;
+       padding-bottom: 10010px;
+       margin-bottom: -10000px;
+       background: #646D7E;
+     }
+
+     #footer{
+       clear: left;
+       width: 100%;
+       background: #646D7E;
+       text-align: center;
+       padding: 5px 0;
+     }
+
+     .innertube{
+       margin: 15px; /* Padding for content */
+       margin-top: 0;
+     }
+
+
+     p {
+       color: #0C090A;
+     }
+
+     nav ul {
+       list-style-type: none;
+       margin: 0;
+       padding: 0;
+     }
+
+     nav ul a {
+       color: darkblue;
+       text-decoration: none;
+     }
+
+   </style>
+ </head>
+
+ <body>
+     <header id="header">
+       <div class="innertube">
+         <% @report = Report.find_by_id(params["id"]) %>
+         <h1>Police Report <%= @report.id %></h1>
+       </div>
+     </header>
+   <div id="mainwrapper">
+
+     <div id="contentwrapper">
+       <div id="content">
+         <div class="innertube">
+           <h1>Incident Date: <%= @report.incident_date %></h1>
+           <p> </p></div>
+       </div>
+     </div>
+
+     <nav id="leftmenu">
+       <div class="innertube">
+         <p> </p>
+       </div>
+     </nav>
+
+     <nav id="rightmenu">
+       <div class="innertube">
+         <h3>Right heading</h3>
+         <ul>
+           <li><a href="#">Link 1</a></li>
+           <li><a href="#">Link 2</a></li>
+           <li><a href="#">Link 3</a></li>
+           <li><a href="#">Link 4</a></li>
+           <li><a href="#">Link 5</a></li>
+         </ul>
+         <h3>Right heading</h3>
+         <ul>
+           <li><a href="#">Link 1</a></li>
+           <li><a href="#">Link 2</a></li>
+           <li><a href="#">Link 3</a></li>
+           <li><a href="#">Link 4</a></li>
+           <li><a href="#">Link 5</a></li>
+         </ul>
+         <h3>Right heading</h3>
+         <ul>
+           <li><a href="#">Link 1</a></li>
+           <li><a href="#">Link 2</a></li>
+           <li><a href="#">Link 3</a></li>
+           <li><a href="#">Link 4</a></li>
+           <li><a href="#">Link 5</a></li>
+         </ul>
+       </div>
+     </nav>
+   </div>
+     <footer id="footer">
+       <div class="innertube">
+         <p>Footer...</p>
+       </div>
+     </footer>
+
+ </body>
+
+</html>
