@@ -53,15 +53,7 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
-  ENV["carnet_key"] = 'efdcc0c9-d06d-4907-97fd-0fe206c1d843'
-  ENV["Content_type"] = 'application/octet-stream'
 
-  ENV["plate_token"] = 'cb7f56d1ac581f4380fa5b0485248d0795aef83f'
-  ENV["github_key"] = '63ce152588de80ba8db1'
-  ENV["github_secret"] = '754b9b131ede6857447dfe2a779abf3a643c519a'
-  ENV["aws_key"] = 'AKIA2MPVCMTYA53SM47N'
-  ENV["aws_secret"] = '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'
-  ENV["ocr"] = "OCRK6543898A"
 
   # Raises error for missing translations.
   # config.action_view.raise_on_missing_translations = true
