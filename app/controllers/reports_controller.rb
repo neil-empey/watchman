@@ -1,9 +1,11 @@
 class ReportsController < ApplicationController
+  layout "user"
+
 
   def index
-    if params[:user_id] && @user = User.find_by_id(:user_id)
+      if @user = User.find_by_id(params[:id])
       @reports = @user.reports
-    else
+      else
       flash[:message] = "You have no reports available"
     end
   end
@@ -31,9 +33,10 @@ class ReportsController < ApplicationController
 
   def report_create(params)
     p = params["report"]
+    crime_date = p["incident_date(2i)"] + p["incident_date(3i)"] + p["incident_date(1i)"]
     @user = current_user
 
-    report = Report.new(:first_name => p["first_name"], :last_name => p["last_name"], :address => p["address"], :telephone_number => p["telephone_number"], :incident_date => ["incident_date"], :summary => p["summary"], :user_id => @user.id, :suspect_data => p["suspect_data"].join('##'), :vehicle_data => p["vehicle_data"].join('##'))
+    report = Report.new(:first_name => p["first_name"], :last_name => p["last_name"], :address => p["address"], :telephone_number => p["telephone_number"], :incident_date => crime_date, :summary => p["summary"], :user_id => @user.id, :suspect_data => p["suspect_data"].join('##'), :vehicle_data => p["vehicle_data"].join('##'))
     report.save
 
     report

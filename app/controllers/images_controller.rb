@@ -1,5 +1,5 @@
 class ImagesController < ApplicationController
-  layout 'application'
+  layout 'user'
 
 
     def new

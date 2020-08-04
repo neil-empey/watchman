@@ -111,6 +111,8 @@ GEM
       rest-client
     coderay (1.1.3)
     colorize (0.8.1)
+    combine_pdf (1.0.18)
+      ruby-rc4 (>= 0.1.5)
     concurrent-ruby (1.1.6)
     crass (1.0.6)
     curb (0.9.10)
@@ -128,6 +130,9 @@ GEM
       thor (>= 0.14.0, < 2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    grover (0.12.3)
+      combine_pdf (~> 1.0)
+      nokogiri (~> 1.0)
     hashie (4.1.0)
     httmultiparty (0.3.16)
       httparty (>= 0.7.3)
@@ -195,6 +200,7 @@ GEM
     omniauth-oauth2 (1.6.0)
       oauth2 (~> 1.1)
       omniauth (~> 1.9)
+    pdfcrowd (4.12.0)
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -246,6 +252,7 @@ GEM
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
     ruby-openid (2.9.2)
+    ruby-rc4 (0.1.5)
     rubyzip (2.3.0)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -302,6 +309,9 @@ GEM
     websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    wicked_pdf (2.1.0)
+      activesupport
+    wkhtmltopdf-binary (0.12.6.2)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.4.0)
@@ -321,6 +331,7 @@ DEPENDENCIES
   curb
   dotenv-rails
   figaro
+  grover
   httparty
   jbuilder (~> 2.7)
   json
@@ -331,6 +342,7 @@ DEPENDENCIES
   omniauth-auth0 (~> 2.2)
   omniauth-github!
   omniauth-openid!
+  pdfcrowd
   pry
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.2)
@@ -346,6 +358,8 @@ DEPENDENCIES
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 4.0)
+  wicked_pdf
+  wkhtmltopdf-binary
 
 RUBY VERSION
    ruby 2.5.1p57

@@ -39,6 +39,10 @@ gem 'CarRegistrationUSA', '~> 0.0.2'
 gem 'figaro'
 gem 'simple_form'
 gem 'carousel'
+gem 'grover'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+gem 'pdfcrowd'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

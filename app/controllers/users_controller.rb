@@ -14,7 +14,7 @@ class UsersController < ApplicationController
        @user.neighborhood_id = @user.location
        @user.save
      else
-       @hood = Neighborhood.find(@user.location)
+       @hood = Neighborhood.find_by_id(@user.location)
        @user.neighborhood_id = @hood.id
        @user.save
      end
@@ -32,8 +32,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    render :layout => "application"
+    render :layout => "user"
    @user = User.find_by_id(params[:id])
+  end
+
+  def index
+    render :layout => "user"
+    @user = User.find_by_id(current_user.id)
   end
 
   private

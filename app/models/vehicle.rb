@@ -63,22 +63,13 @@ class Vehicle < ApplicationRecord
       @info = Vehicle.get_data(current_user)
 
       (0...@info["vehicles"].length).each do |i|
+        
         carnet = @info["carnet"][i][0]
         auto = @info["vehicles"][i]
         ocr = @info["ocr"][i]
 
-
-
-        if carnet == nil
-          @new_vehicle = Vehicle.create(:make => "undetermined", :model => "undetermined", :year => "undetermined", :plate => ocr, :color => "", :background => "", :user_id => current_user.id, :url => auto["url"], :public_id => auto["public_id"], :report_id => nil)
-        else
-
           @new_vehicle = Vehicle.create(:make => carnet["make_name"], :model => carnet["model_name"], :year => carnet["years"], :plate => ocr, :color => "", :background => "", :user_id => current_user.id, :url => auto["url"], :public_id => auto["public_id"], :report_id => nil)
-        end
       end
         @new_vehicle.save
-  end
-
-  def create
   end
  end

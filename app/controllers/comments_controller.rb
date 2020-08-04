@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  layout "user"
 
   def index
     if params[:report_id] && @report = find_by_id(params[:report_id])

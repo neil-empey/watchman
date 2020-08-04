@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_31_185701) do
+ActiveRecord::Schema.define(version: 2020_08_01_200406) do
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
@@ -90,13 +90,13 @@ ActiveRecord::Schema.define(version: 2020_07_31_185701) do
     t.string "last_name"
     t.text "address"
     t.string "telephone_number"
-    t.string "incident_date"
     t.text "summary"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "suspect_data"
     t.text "vehicle_data"
+    t.string "incident_date"
     t.index ["user_id"], name: "index_reports_on_user_id"
   end
 

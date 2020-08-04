@@ -1,5 +1,5 @@
 class VehiclesController < ApplicationController
-
+  layout "user"
 
 
   def index

@@ -23,13 +23,30 @@
           <a href="#" class="navbar-brand">
               <img src="https://res.cloudinary.com/argustwo/image/upload/v1595357921/uxu2a0dtclucojsznbnv.jpg" height="150" alt="Pirate">
           </a>
+          <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+              <span class="navbar-toggler-icon"></span>
+          </button>
 
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+              <div class="navbar-nav">
+                  <a href="/vehicles/new" class="nav-item nav-link">Add Vehicles</a>
+                  <a href="/images/new" class="nav-item nav-link">Add Suspects</a>
+                  <a href="/reports/new" class="nav-item nav-link">Create Report</a>
+                  <a href="/user/<%= current_user.id %>/reports" class="nav-item nav-link">View Reports</a>
+                  <a href="/neighborhoods/<%= current_user.neighborhood.id %>/users" class="nav-item nav-link">Your Neighborhood</a>
+
+              </div>
+                </div>
 
       </nav>
       <div>
+        <% if flash[:message] %>
+          <%= flash[:message] %>
+          <% end %>
           </div>
   </div>
 
     <%= yield %>
   </body>
+  <%= button_to "Logout", '/logout', method: :post%>
   </html>
