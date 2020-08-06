@@ -57,8 +57,8 @@ Rails.application.configure do
   ENV["Content_type"] = 'application/octet-stream'
 
   ENV["plate_token"] = 'cb7f56d1ac581f4380fa5b0485248d0795aef83f'
-  ENV["github_key"] = '63ce152588de80ba8db1'
-  ENV["github_secret"] = '754b9b131ede6857447dfe2a779abf3a643c519a'
+  ENV["GITHUB_KEY"] = '325bb043527c8ceae7f2'
+  ENV["GITHUB_SECRET"] = '3420463550d27e223da59847daebd7eb777c7554'
   ENV["aws_key"] = 'AKIA2MPVCMTYA53SM47N'
   ENV["aws_secret"] = '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'
   ENV["ocr"] = "OCRK6543898A"

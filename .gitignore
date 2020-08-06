@@ -36,6 +36,7 @@
 /config/omniauth.rb
 /config/initializers/auth0.rb
 /config/environments
+/config/initializers
 
 /public/packs
 /public/packs-test

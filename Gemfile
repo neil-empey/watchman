@@ -22,9 +22,7 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'omniauth'
-gem 'omniauth-github', github: 'intridea/omniauth-github'
-gem 'omniauth-openid', github: 'intridea/omniauth-openid'
-gem 'omniauth-auth0', '~> 2.2'
+gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
 gem 'ocr_space'
 gem 'aws-sdk-rekognition'
 gem 'cloudinary'
@@ -39,10 +37,9 @@ gem 'CarRegistrationUSA', '~> 0.0.2'
 gem 'figaro'
 gem 'simple_form'
 gem 'carousel'
-gem 'grover'
 gem 'wicked_pdf'
-gem 'wkhtmltopdf-binary'
-gem 'pdfcrowd'
+gem 'omniauth-openid'
+
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

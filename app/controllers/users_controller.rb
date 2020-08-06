@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  include Secured
+
+  skip_before_action :authorized, :except => [:new, :create]
 
   def new
     @user = User.new
@@ -45,5 +48,10 @@ class UsersController < ApplicationController
 
   def user_params
   params.require(:user).permit(:name, :email, :location, :password, :password_confirmation)
+  end
+
+  def auth_hash
+    data = request.env['omniauth.auth']
+    data
   end
 end

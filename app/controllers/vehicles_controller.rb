@@ -1,4 +1,5 @@
 class VehiclesController < ApplicationController
+  
   layout "user"
 
 

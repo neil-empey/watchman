@@ -1,4 +1,5 @@
 <h1><center>New Report</center></h1>
+<%= render partial: "layouts/errors", locals: {object: @report} %>
 <body style="margin:300;padding:0">
   <%= simple_form_for @report do |f| %>
     <%= f.input :first_name, label: 'First Name', hint: 'legal name', error: 'first name required' %>
@@ -7,7 +8,7 @@
     <%= f.input :telephone_number, label: 'Telephone Number', error: 'telephone number required' %>
     <%= f.input :incident_date, label: 'Incident Date',  as: :date, start_year: Date.today.year - 90,
                               end_year: Date.today.year, discard_day: false,
-                              order: [:month, :day, :year] %> 
+                              order: [:month, :day, :year] %>
     <%= f.input :summary, label: 'Please describe event, loss, damage' %>
     <%= f.input :suspect_data, label: 'Select Suspects', as: :check_boxes, collection: @user.images.collect {|pic| pic.url} %>
     <%= f.input :vehicle_data, label: 'Select Vehicles', as: :check_boxes, collection: @user.vehicles.collect {|car| car.url} %>

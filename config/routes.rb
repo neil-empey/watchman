@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   root 'sessions#welcome'
 
   get '/signup' => 'users#new'
@@ -12,18 +13,22 @@ Rails.application.routes.draw do
 
   get 'users/:id' => 'users#show'
 
-  get '/auth/auth0/callback' => 'auth0#callback'
-  get '/auth/failure' => 'auth0#failure'
+  get '/auth/github/callback' => 'sessions#github'
 
   get 'vehicles/new' => 'vehicles#new'
   post 'vehicles' => 'vehicles#create'
-
-  get '/dashboard' => 'sessions#github'
 
   get '/images/new' => 'images#new'
   post '/images' => 'images#create'
 
   get "/user/:id/reports" => 'reports#index'
+
+  get "/reports/:id/comments/new" => 'comments#new'
+  post "/reports/:id/comments" => 'comments#create'
+
+  get "neighborhoods/:id/reports/:id" => 'neighborhoods#show'
+
+  get '/info' => 'dashboard#show'
 
 
 
@@ -33,7 +38,7 @@ Rails.application.routes.draw do
     end
 
   resources :reports do
-    resources :comments, only: [:new]
+    resources :comments, only: [:new, :create]
     end
 
   resources :neighborhoods do

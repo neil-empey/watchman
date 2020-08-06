@@ -1,0 +1,23 @@
+<%= render partial: "layouts/errors", locals: {object: @comment} %>
+<% @report = Report.find_by_id(params["id"]) %>
+<% @comment = Comment.new %>
+<br>
+<br>
+<h4> CAREFUL! comments cannot be undone.</h4>
+<br>
+  <%= form_with(url: "/reports/#{@report.id}/comments", method: "post")  do %>
+  <%= label_tag(:content, "Enter Comment") %>
+  <%= text_field_tag(:content) %>
+  <%= submit_tag("Add Comment") %>
+<% end %>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
