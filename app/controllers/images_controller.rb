@@ -24,7 +24,7 @@ class ImagesController < ApplicationController
 
     def create
       Image.add(current_user.id)
-      redirect_to "/users/#{current_user.id}"
+      redirect_to '/users/:id'
     end
 
     def update

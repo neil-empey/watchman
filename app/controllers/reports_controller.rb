@@ -3,11 +3,11 @@ class ReportsController < ApplicationController
 
 
   def index
-      if @user = User.find_by_id(params[:id])
-      @reports = @user.reports
-      else
-      flash[:message] = "You have no reports available"
-    end
+    @user = User.find_by_id(params[:id])
+      if @user.reports.length < 1
+        flash[:message] = "You have no reports available"
+        redirect_to "/users/#{@user.id}/"
+      end
   end
 
   def new
@@ -20,8 +20,13 @@ class ReportsController < ApplicationController
   end
 
   def create
-    @report = report_create(params)
+    @user = current_user
+    @report = @user.reports.build(report_params)
+    if @report.save
     redirect_to "/users/#{@user.id}/reports/#{@report.id}"
+    else
+      render :new
+    end
   end
 
   def destroy
@@ -31,15 +36,8 @@ class ReportsController < ApplicationController
 
   private
 
-  def report_create(params)
-    p = params["report"]
-    crime_date = p["incident_date(2i)"] + p["incident_date(3i)"] + p["incident_date(1i)"]
-    @user = current_user
-
-    report = Report.new(:first_name => p["first_name"], :last_name => p["last_name"], :address => p["address"], :telephone_number => p["telephone_number"], :incident_date => crime_date, :summary => p["summary"], :user_id => @user.id, :suspect_data => p["suspect_data"].join('##'), :vehicle_data => p["vehicle_data"].join('##'))
-    report.save
-
-    report
+  def report_params
+    params.require(:report).permit(:first_name, :last_name, :address, :telephone_number, :incident_date, :summary, :suspect_data, :vehicle_data)
   end
 
 end

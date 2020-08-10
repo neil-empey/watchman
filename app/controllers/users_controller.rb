@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   include Secured
 
-  skip_before_action :authorized, :except => [:new, :create]
+  skip_before_action :authorized, :only => [:new, :create]
 
   def new
     @user = User.new

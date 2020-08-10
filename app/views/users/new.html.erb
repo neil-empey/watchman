@@ -1,16 +1,14 @@
-
+  <style> background-color:#1d1d1d !important; </style>
     <h1>Signup!</h1>
     <%= render partial: "layouts/errors", locals: {object: @user} %>
-    <%= form_for(@user, url: '/signup') do |user_form| %>
-      <%= user_form.label("Name") %>
-      <%= user_form.text_field(:name) %><br>
-      <%= user_form.label("Email") %>
-      <%= user_form.email_field(:email) %><br>
-      <%= user_form.label("Zipcode") %>
-      <%= user_form.text_field(:location) %><br>
-      <%= user_form.label("Password") %>
-      <%= user_form.password_field(:password) %><br>
-      <%= user_form.label("Confirm Password") %>
-      <%= user_form.password_field(:password_confirmation) %><br>
-      <%= user_form.submit "Submit" %>
+
+    <%= simple_form_for @user do |f| %>
+    <%= f.input :name, label: 'Name', error: 'Name is a required field' %>
+    <%= f.input :email, label: 'Email', as: :email, error: 'Email is required field' %>
+    <%= f.input :location, label: 'Zipcode', error: 'Required field' %>
+    <%= f.input :password, label: 'Password', as: :password %>
+    <%= f.input :password_confirmation, label: 'Confirm Password', as: :password %>
+    <%= f.button :submit, "Join Watchman", class: "my-button" %>
     <% end %>
+    <br>
+    <br>

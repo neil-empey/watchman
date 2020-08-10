@@ -1,10 +1,84 @@
 
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <title>flip box</title>
+   <style type="text/css">
+     body {
+       background-color:#1d1d1d !important; 
+     }
+     .flip-box {
+background-color: transparent;
+width: 500px;
+height: 75px;
+border: 1px solid #f1f1f1;
+perspective: 1000px;
+}
 
+
+.flip-box-inner {
+position: relative;
+width: 100%;
+height: 100%;
+text-align: center;
+transition: transform 0.9s;
+transform-style: preserve-3d;
+}
+
+
+.flip-box:hover .flip-box-inner {
+transform: rotateX(180deg);
+}
+
+
+.flip-box-front, .flip-box-back {
+position: absolute;
+width: 100%;
+height: 100%;
+-webkit-backface-visibility: hidden;
+backface-visibility: hidden;
+}
+
+.flip-box-front {
+background-color: #bbb;
+color: black;
+}
+
+.flip-box-back {
+background-color: dodgerblue;
+color: white;
+transform: rotateX(180deg);
+}
+</style>
+</head>
+
+<body>
   <%@user = current_user%>
-  <h2>You currently have <%= @user.vehicles.length %> suspect vehicles and
-  <%= @user.images.length %> suspect/crime images.</h2><br><br>
 
 
+  <div class="flip-box">
+ <div class="flip-box-inner">
+   <div class="flip-box-front">
+     <h2><%= @user.name %> you have</h2>
+   </div>
+   <div class="flip-box-back">
+     <h2><%= @user.vehicles.length %> suspect <%= 'vehicles'.pluralize %></h2>
+   </div>
+ </div>
+</div>
 
+<div class="flip-box">
+ <div class="flip-box-inner">
+   <div class="flip-box-front">
+     <h2>and . . .</h2>
+   </div>
+   <div class="flip-box-back">
+     <h2><%= @user.images.length %> suspect <%= 'images'.pluralize %></h2>
+   </div>
+ </div>
+</div>
 
-    
+</body>
+<br>
+</html>

@@ -17,7 +17,7 @@ Password: <%= password_field_tag :password, "" %>
           <div class="container">
             <div class="row">
               <div class="col-md-9 col-lg-8 mx-auto">
-                <h3 class="login-heading mb-4">Welcome back!</h3>
+                <h3 class="login-heading mb-4">Returning ?</h3>
                 <div class="form-label-group">
                 <%= form_tag '/signin' do %>
                 <h3>Email</h3>
@@ -26,7 +26,6 @@ Password: <%= password_field_tag :password, "" %>
                  <p><%= password_field_tag :password, placeholder="" %></p>
                 <%= submit_tag "Login" %>
                 <% end %>
-                <br><br>
                 <%= link_to "Sign in with Github", "/auth/github" %>
                 </div>
               </div>

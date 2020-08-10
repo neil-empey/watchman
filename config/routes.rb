@@ -11,13 +11,15 @@ Rails.application.routes.draw do
 
   post '/logout' => 'sessions#destroy'
 
-  get 'users/:id' => 'users#show'
+  get '/users/:id' => 'users#show'
 
   get '/auth/github/callback' => 'sessions#github'
 
-  get 'vehicles/new' => 'vehicles#new'
+  get '/vehicles' => 'vehicles#show'
+  get '/vehicles/new' => 'vehicles#new'
   post 'vehicles' => 'vehicles#create'
 
+  get '/images' => 'images#show'
   get '/images/new' => 'images#new'
   post '/images' => 'images#create'
 
@@ -26,12 +28,14 @@ Rails.application.routes.draw do
   get "/reports/:id/comments/new" => 'comments#new'
   post "/reports/:id/comments" => 'comments#create'
 
-  get "neighborhoods/:id/reports/:id" => 'neighborhoods#show'
+  get "/neighborhoods/:id/reports/:id" => 'neighborhoods#show'
 
   get '/info' => 'dashboard#show'
 
 
-
+  resources :comments do
+    resources :users
+  end
 
   resources :users do
     resources :reports, only: [:show, :index]

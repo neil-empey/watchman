@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -12,6 +13,9 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <style>
+      body {
+      background-color:#1d1d1d !important;
+    }
       .bs-example{
           margin: 20px;
       }
@@ -29,16 +33,19 @@
 
           <div class="collapse navbar-collapse" id="navbarCollapse">
               <div class="navbar-nav">
-                  <a href="/vehicles/new" class="nav-item nav-link">Add Vehicles</a>
-                  <a href="/images/new" class="nav-item nav-link">Add Suspects</a>
-                  <a href="/reports/new" class="nav-item nav-link">Create Report</a>
+                  <a href="/vehicles/new" class="nav-item nav-link">Add/View Vehicles</a>
+                  <a href="/images/new" class="nav-item nav-link">Add/View Suspects</a>
+                  <a href="/reports/new" class="nav-item nav-link">New Report</a>
                   <a href="/user/<%= current_user.id %>/reports" class="nav-item nav-link">View Reports</a>
                   <a href="/neighborhoods/<%= current_user.neighborhood.id %>/users" class="nav-item nav-link">Your Neighborhood</a>
+                  < href="/comments/"
 
               </div>
                 </div>
 
       </nav>
+        <hr style="height:13px;border-width:0;color:gray;background-color:black">
+      <br>
       <div>
         <% if flash[:message] %>
           <%= flash[:message] %>
@@ -48,5 +55,7 @@
 
     <%= yield %>
   </body>
-  <%= button_to "Logout", '/logout', method: :post%>
+  <br>
+  <br>
+  <h5><%= button_to "Logout", '/logout', method: :post%></h5>
   </html>
