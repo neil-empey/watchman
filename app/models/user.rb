@@ -10,7 +10,6 @@ class User < ApplicationRecord
 
   belongs_to :neighborhood
   has_many :comments
-  has_many :commented_reports, through: :comments
   has_many :vehicles
   has_many :images
   has_many :reports

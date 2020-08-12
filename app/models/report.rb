@@ -3,9 +3,8 @@ class Report < ApplicationRecord
   has_many :vehicles, through: :users
   has_many :images, through: :users
   has_many :users
-  has_many :comments, through: :users
-  has_many :comments_reports
-  has_many :comments, through: :comments_reports
+  has_many :reports_comments
+  has_many :comments, through: :reports_comments
 
   validates :first_name, :last_name, :address, :telephone_number, :incident_date, :suspect_data, :vehicle_data, presence: true, on: :create
 

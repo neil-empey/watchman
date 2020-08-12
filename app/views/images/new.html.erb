@@ -1,4 +1,17 @@
 <%= render partial: "layouts/errors", locals: {object: @image} %>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>signup</title>
+  <style type="text/css">
+
+    h1 {
+      text-align: center;
+    }
+    h4 {
+        text-align: center;
+    }
+  </style>
+</head>
 <h1 style="color:DarkOrange;">Add Suspect Images <%="#{@user.name}"%></h1>
 
 <h4 style="color:Blue"> Upload, then "Add Suspects" when finished</h4><br>
@@ -29,6 +42,6 @@
   <% end %><br>
 
   <button onclick="window.location.href='/images';">
-     Suspects
+     View Your Suspects
    </button>
 <br><br>

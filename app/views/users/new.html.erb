@@ -1,14 +1,29 @@
-  <style> background-color:#1d1d1d !important; </style>
-    <h1>Signup!</h1>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>signup</title>
+  <style type="text/css">
+    btn.my-button{
+      color #00008b
+    }
+    h1 {
+      text-align: center;
+    }
+  </style>
+</head>
+
+    <h1 style="color:DarkBlue;">Signup!</h1>
+    <br>
     <%= render partial: "layouts/errors", locals: {object: @user} %>
 
     <%= simple_form_for @user do |f| %>
-    <%= f.input :name, label: 'Name', error: 'Name is a required field' %>
-    <%= f.input :email, label: 'Email', as: :email, error: 'Email is required field' %>
-    <%= f.input :location, label: 'Zipcode', error: 'Required field' %>
-    <%= f.input :password, label: 'Password', as: :password %>
-    <%= f.input :password_confirmation, label: 'Confirm Password', as: :password %>
+    <h5 style="color:DarkBlue;"><%= f.input :name, label: 'Name', error: 'Name is a required field' %></h5>
+    <h5 style="color:DarkBlue;"><%= f.input :email, label: 'Email', as: :email, error: 'Email is required field' %></h5>
+    <h5 style="color:DarkBlue;"><%= f.input :location, label: 'Zipcode', error: 'Required field' %></h5>
+    <h5 style="color:DarkBlue;"><%= f.input :password, label: 'Password', as: :password %></h5>
+    <h5 style="color:DarkBlue;"><%= f.input :password_confirmation, label: 'Confirm Password', as: :password %></h5>
+    <div style="background-color:orange">
     <%= f.button :submit, "Join Watchman", class: "my-button" %>
+  </div>
     <% end %>
     <br>
     <br>

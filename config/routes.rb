@@ -28,25 +28,25 @@ Rails.application.routes.draw do
   get "/reports/:id/comments/new" => 'comments#new'
   post "/reports/:id/comments" => 'comments#create'
 
-  get "/neighborhoods/:id/reports/:id" => 'neighborhoods#show'
+  get "/neighborhoods/:id/users" => 'neighborhoods#show'
 
   get '/info' => 'dashboard#show'
 
+  get '/users/:user_id/comments' => 'comments#index' 
 
-  resources :comments do
-    resources :users
+
+  resources :reports
+
+  resources :users do
+    resources :comments_reports, only: [:index]
   end
 
   resources :users do
     resources :reports, only: [:show, :index]
     end
 
-  resources :reports do
-    resources :comments, only: [:new, :create]
-    end
-
   resources :neighborhoods do
-    resources :users, only: [:index]
+    resources :reports, only: [:index]
     end
 
 

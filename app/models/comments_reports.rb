@@ -1,4 +1,5 @@
 class CommentsReports < ApplicationRecord
-  belongs_to :comment
   belongs_to :report
+  belongs_to :comment
+
 end

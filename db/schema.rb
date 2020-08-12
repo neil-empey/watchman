@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_10_072807) do
+ActiveRecord::Schema.define(version: 2020_08_10_202726) do
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
@@ -21,11 +21,11 @@ ActiveRecord::Schema.define(version: 2020_08_10_072807) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "comments_reports_id", id: false, force: :cascade do |t|
-    t.integer "comments_report_id", null: false
-    t.integer "id_id", null: false
-    t.integer "comments_id"
-    t.integer "report_id"
+  create_table "comments_reports", id: false, force: :cascade do |t|
+    t.integer "report_id", null: false
+    t.integer "comment_id", null: false
+    t.index ["comment_id", "report_id"], name: "index_comments_reports_on_comment_id_and_report_id"
+    t.index ["report_id", "comment_id"], name: "index_comments_reports_on_report_id_and_comment_id"
   end
 
   create_table "images", force: :cascade do |t|

@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   include Secured
 
+  layout "user", except: [:new]
+
   skip_before_action :authorized, :only => [:new, :create]
 
   def new

@@ -13,9 +13,22 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <style>
+      body {
+        text-align: center;
       background-color:#1d1d1d !important;
+    }
+    h1 {
+      text-align: center;
+    }
+    header {
+      text-align: center;
+    }
       .bs-example{
+        text-align: center;
           margin: 20px;
+      }
+      .innertube {
+        text-align: center;
       }
   </style>
   </head>
@@ -29,9 +42,13 @@
 
       </nav>
       <div>
-          </div>
-  </div>
+        <br>
 
-    <%= yield %>
+
+
+
   </body>
+
+
   </html>
+  <%= yield %>

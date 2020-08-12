@@ -1,7 +1,16 @@
 <%= render partial: "layouts/errors", locals: {object: @vehicle} %>
-body {
-  background-color:#1d1d1d !important;
-}
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>signup</title>
+  <style type="text/css">
+    h1 {
+      text-align: center;
+    }
+    h4 {
+      text-align: center;
+    }
+  </style>
+</head>
 <h1 style="color:DarkOrange;">Upload Suspect Vehicles <%="#{@user.name}"%></h1>
 
 <h4 style="color:Blue">  click "Add Vehicles" when finished</h4><br>
@@ -32,6 +41,6 @@ body {
   <% end %><br>
 
   <button onclick="window.location.href='/vehicles';">
-     My Vehicles
+     View Your Vehicles
    </button>
 <br><br>

@@ -63,7 +63,7 @@ class Vehicle < ApplicationRecord
       @info = Vehicle.get_data(current_user)
 
       (0...@info["vehicles"].length).each do |i|
-        
+
         carnet = @info["carnet"][i][0]
         auto = @info["vehicles"][i]
         ocr = @info["ocr"][i]

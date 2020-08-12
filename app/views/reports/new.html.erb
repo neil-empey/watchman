@@ -1,11 +1,33 @@
 
 
 
+<head>
+<style>
+  background-color:#1d1d1d !important;
 
-<style> background-color:#1d1d1d !important; </style>
-<h1><center>New Community Report</center></h1>
+  body {
+    color: DarkBlue;
+  }
+  label {
+    color: DarkBlue;
+  }
+   form {
+    color: DarkBlue;
+  }
+  input.btn {
+    color: DarkBlue;
+  }
+  h5 {
+    color: DarkBlue;
+  }
+  p {
+    color: DarkBlue;
+  }
+</style>
+</head>
+<h1 style="color:DarkBlue;"><center>New Community Report</center></h1>
 <% render partial: 'layouts/errors', locals: {object: @report} %>
-<body style="margin:300;padding:0">
+<body style="margin:300;padding:0, color:DarkBlue;">
   <%= simple_form_for @report do |f| %>
     <%= f.input :first_name, label: 'First Name', hint: 'legal name', error: 'first name required' %>
     <%= f.input :last_name, label: 'Last Name', error: 'last name required' %>
@@ -15,7 +37,7 @@
     <%= f.input :summary, label: 'Please describe event, loss, damage' %>
     <%= f.input :suspect_data, label: 'Select Suspects', hint: 'choose best', collection: @user.images.collect {|pic| pic.url} %>
     <%= f.input :vehicle_data, label: 'Select Vehicles', hint: 'choose best', collection: @user.vehicles.collect {|car| car.url} %>
-    <%= f.button :submit %>
+    <h4 style="color:DarkBlue"><%= f.button :submit %></h4>
     <% end %>
 
 </body>

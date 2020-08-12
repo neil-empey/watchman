@@ -1,170 +1,183 @@
-<!-- Container for the image gallery -->
-<div class="container">
 
-  <!-- Full-width images with number text -->
-  <div class="innertube">
-    <div class="numbertext"></div>
     <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       <title>3 Column, Right Menus</title>
       <style type="text/css">
 
-        h4 {text-align: center;}
+             h4 {text-align: center;}
+               div {text-align: center;}
 
-        body{
-          background-color:#1d1d1d !important;
-          color #00060f;
-          margin:0;
-          padding:5px;
-          font-family: Sans-Serif;
-          line-height: 1.5em;
-        }
+             body{
+               background-color:#1d1d1d !important;
+               color #00060f;
+               margin:0;
+               padding:5px;
+               font-family: Sans-Serif;
+               line-height: 1.5em;
+             }
 
-        #header {
+             #header {
+               text-align: center;
+               background: #0000A0;
+               height: 3px;
+             }
 
-          background: #0000A0;
-          height: 3px;
-        }
+             header h1 {
+               text-align: center;
+               margin: 0;
+               padding-top: 15px;
+               padding-bottom: 0px;
 
-        #header h1 {
+             }
 
-          margin: 0;
-          padding-top: 15px;
-          padding-bottom: 75px;
+             #mainwrapper {
+               text-align: center;
+               overflow: hidden;
+             }
 
-        }
+             #contentwrapper{
+               float: left;
+               width: 99%;
+               overflow: hidden;
+             }
 
-        #mainwrapper {
-          overflow: hidden;
-        }
+             #content {
+               margin-right: 50px; /* Width of '#rightmenu' and '#leftmenu' combined. */
+               padding-bottom: 10px;
+               margin-bottom: 0px;
+               overflow: hidden;
+             }
 
-        #contentwrapper{
-          float: left;
-          width: 99%;
-          overflow: hidden;
-        }
+             #leftmenu {
+               float: right;
+               width: 275px;
+                padding-top: 21px;
+               margin-right: 1071px; /* Width of '#rightmenu' and '#leftmenu' combined. */
+               padding-bottom: 21px;
+               margin-bottom: 10px;
+               background: #737CA1;
+               overflow: hidden;
+             }
 
-        #content {
-          margin-right: 305px; /* Width of '#rightmenu' and '#leftmenu' combined. */
-          padding-bottom: 10px;
-          margin-bottom: 90px;
-          overflow: hidden;
-        }
+             #rightmenu {
+               float: left;
+               width: 100px;
+               padding-top: 21px;
+               margin-top: 1px;
+               margin-left: -210px;
+               padding-bottom: 21px;
+               margin-bottom: 5px;
+               background: #646D7E;
+               overflow: hidden;
+             }
 
-        #leftmenu {
-          float: left;
-          width: 275px;
-          margin-left: -500px; /* Width of '#rightmenu' and '#leftmenu' combined. */
-          padding-bottom: 25px;
-          margin-bottom: 100px;
-          background: #737CA1;
-          overflow: hidden;
-        }
+             #footer{
+               clear: left;
+               width: 100%;
+               background: #646D7E;
+               text-align: center;
+               padding: 5px;
+               overflow: hidden;
+             }
 
-        #rightmenu {
-          float: left;
-          width: 100px;
-          margin-left: -210px;
-          padding-bottom: 91px;
-          margin-bottom: 95px;
-          background: #646D7E;
-          overflow: hidden;
-        }
-
-        #footer{
-          clear: left;
-          width: 100%;
-          background: #646D7E;
-          text-align: center;
-          padding: 5px;
-          overflow: hidden;
-        }
-
-        .innertube{
-          color #00060f;
-          margin: 25px; /* Padding for content */
-          margin-top: 5px;
-          margin-bottom: 35px;
-          overflow: hidden;
-        }
+             #div.innertube{
+               text-align: center;
+               color #00060f;
+               margin: 5px; /* Padding for content */
+               margin-top: 5px;
+               margin-bottom: 5px;
+               overflow: hidden;
+             }
 
 
-        p {
-          color: #00060f;
-        }
+             p {
+               color: #00060f;
+             }
 
-        nav ul {
-          list-style-type: none;
-          margin: 0;
-          padding: 0;
-          overflow: hidden;
-        }
+             nav ul {
+               list-style-type: none;
+               margin: 0;
+               padding: 0;
+               overflow: hidden;
+             }
 
-        nav ul a {
+             nav ul a {
 
-          text-decoration: none;
-          overflow: hidden;
-        }
+               text-decoration: none;
+               overflow: hidden;
+             }
+
+
 
       </style>
     </head>
+    <!-- Container for the image gallery -->
 
-    <body>
-        <header id="header">
-          </header>
-          </div>
-</div>
-<div id="mainwrapper">
 
-              <div id="content">
-          <div class="innertube", style="color:black;">
-            <% @user = User.find_by_id(params[:id]) %>
+      <!-- Full-width images with number text -->
+
+
+
+
+
+
+          <header id="header">
+            </header>
+            </div>
+     </div>
+     <body>
+
+
+
+
+
+          <% @user = User.find_by_id(params[:id]) %>
             <% @user.reports.each do |report| %>
+            <div id="mainwrapper">
+            <div id="contentwrapper">
+            <div id="content">
+              <div class="innertube", style="color:black;">
+
             <h1 style="color:black;">Neighborhood Report <%= report.id %>:  for <%= report.address %></h1>
-              <hr style="height:7px;border-width:50%;color:gray;background-color:black">
+
+              <hr style="height:7px;border-width:100%;color:gray;background-color:black">
             <br>
 
-          </div>
 
-          </div>
-
-
-
-
-
-        <div id="contentwrapper">
-          <div id="content">
+        </div>
+      </div>
+      <div id="contentwrapper">
+        <div id="content">
             <div class="innertube", style="color:black;">
               <h2>Incident Date: <%= report.incident_date %></h2><br>
               <h5>This report is autogenerated on behalf of </h5> <h3><%= report.first_name %> <%= report.last_name %>. </h3><br>
 
               <h5> Crime Summary: </h5>
-              <hr style="height:4px;border-width:0;color:gray;background-color:gray">
+      <hr style="width:50%;height:2px;border-width:0;color:blue;background-color:blue">
 
             <p><%= report.summary %> </div>
           </div>
-          <br>
-          </div>
 
-
+        </div>
+        <div class="innertube">
         <nav id="rightmenu">
-          <div class="innertube">
+
             <ul>
          <h4 style="centered">
              <li> W</li>
-             <hr style="height:3px;border-width:0;color:gray;background-color:gray">
+             <hr style="height:3px;border-width:0;color:gray;background-color:DarkBlue">
               <li> A </li>
-              <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+              <hr style="height:2px;border-width:0;color:gray;background-color:DarkBlue">
               <li>  T </li>
-              <hr style="height:3px;border-width:0;color:gray;background-color:gray">
+              <hr style="height:3px;border-width:0;color:gray;background-color:DarkBlue">
               <li> C </li>
-              <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+              <hr style="height:2px;border-width:0;color:gray;background-color:DarkBlue">
               <li>  H </li>
-              <hr style="height:3px;border-width:0;color:gray;background-color:gray">
+              <hr style="height:3px;border-width:0;color:gray;background-color:DarkBlue">
               <li> M </li>
-              <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+              <hr style="height:2px;border-width:0;color:gray;background-color:DarkBlue">
               <li>  A </li>
-              <hr style="height:3px;border-width:0;color:gray;background-color:gray">
+              <hr style="height:3px;border-width:0;color:gray;background-color:DarkBlue">
               <li> N </li>
             </h4>
             </ul>
@@ -174,7 +187,8 @@
         <nav id="leftmenu">
           <div class="innertube">
             <h3>Suspects</h3>
-            <hr style="height:4px;border-width:0;color:gray;background-color:gray">
+
+            <hr style="height:4px;border-width:0;color:gray;background-color:DarkBlue">
             <% suspect_images = report.suspect_data.split('##') %>
             <% suspect_images.each do |pic| %>
             <% if pic != "" %>
@@ -183,8 +197,9 @@
             </ul>
             <% end %>
             <% end %>
+            <br>
             <h3>Suspect Vehicles</h3>
-            <hr style="height:5px;border-width:0;color:gray;background-color:gray">
+            <hr style="height:5px;border-width:0;color:gray;background-color:DarkBlue">
             <% suspect_vehicles = report.vehicle_data.split('##') %>
             <% suspect_vehicles.each do |pic| %>
             <% if pic != "" %>
@@ -193,10 +208,13 @@
             </ul>
             <% end %>
             <% end %>
+
           </div>
         </nav>
       </div>
-      <br>
+      </div>
+
+
 
 
 
@@ -204,10 +222,22 @@
           <hr style="height:7px;border-width:0;color:gray;background-color:gray">
           <div class="innertube">
             <p>Neighborhood: <%= @user.neighborhood_id %>....  Email: <%= @user.email %>.... Telephone Number: <%= report.telephone_number %></p>
-          </div>
+            </div>
+
           <hr style="height:7px;border-width:0;color:gray;background-color:gray">
         </footer>
         <br>
-
+        <br>
         <% end %>
-</body>
+        <br>
+        <br>
+      </div>
+    </div>
+
+
+        <br>
+
+
+      </div>
+      <br>
+      <br>

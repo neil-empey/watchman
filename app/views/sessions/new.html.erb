@@ -17,15 +17,16 @@ Password: <%= password_field_tag :password, "" %>
           <div class="container">
             <div class="row">
               <div class="col-md-9 col-lg-8 mx-auto">
-                <h3 class="login-heading mb-4">Returning ?</h3>
+                <h3 class="login-heading mb-4" style="color:DarkBlue;">Returning? Good to see you back...</h3>
                 <div class="form-label-group">
                 <%= form_tag '/signin' do %>
-                <h3>Email</h3>
+                <h3 style="color:DarkBlue;">Email</h3>
                  <p><%= email_field_tag :email, placeholder="" %><br></p>
-                 <h3>Password</h3>
+                 <h3 style="color:DarkBlue;">Password</h3>
                  <p><%= password_field_tag :password, placeholder="" %></p>
                 <%= submit_tag "Login" %>
                 <% end %>
+                <br>
                 <%= link_to "Sign in with Github", "/auth/github" %>
                 </div>
               </div>
