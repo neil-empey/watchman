@@ -1,6 +1,6 @@
 class ReportsController < ApplicationController
   layout "user"
-
+  before_action :require_login
 
   def index
     @user = User.find_by_id(params[:id])

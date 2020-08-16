@@ -32,4 +32,8 @@ module ApplicationHelper
   def user_images
       Image.all.select {|picture| current_user.id == picture.user_id}
   end
+
+  def require_login
+  redirect_to :root_path, notice: "Please log in or sign up" unless current_user
+  end
 end

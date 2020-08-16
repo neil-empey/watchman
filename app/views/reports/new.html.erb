@@ -37,7 +37,7 @@
     <%= f.input :summary, label: 'Please describe event, loss, damage' %>
     <%= f.input :suspect_data, label: 'Select Suspects', hint: 'choose best', collection: @user.images.collect {|pic| pic.url} %>
     <%= f.input :vehicle_data, label: 'Select Vehicles', hint: 'choose best', collection: @user.vehicles.collect {|car| car.url} %>
-    <h4 style="color:DarkBlue"><%= f.button :submit %></h4>
+    <h3 style="color:DarkBlue"><%= f.button :submit %></h3>
     <% end %>
 
 </body>

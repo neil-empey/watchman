@@ -1,4 +1,8 @@
-
+<% flash.each do |type, msg| %>
+  <div class="alert alert-info">
+    <%= msg %>
+  </div>
+<% end %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -13,16 +17,24 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <style>
-    header {text-align: center;}
+      h5 {
+        align-content: center;
+        text-align: center;
+      }
+    header {text-align: center;
+    background-color:SteelBlue;}
       body {
+        content-align: center;
         text-align: center;
       background-color:#1d1d1d !important;
     }
       h1{text-align: center;}
       .bs-example{
+
           margin: 100px;
       }
       .vl {
+        background-color:SteelBlue;
   border-left: 6px solid blue;
   height: 73px;
   position:
@@ -34,7 +46,7 @@
   </head>
   <body style="margin-left:30px; margin-right:30px;">
   <div class="bs-example">
-      <nav class="navbar navbar-expand-md navbar-light bg-light">
+      <nav class="navbar navbar-expand-md navbar-light bg-info">
           <a href="#" class="navbar-brand">
               <img src="https://res.cloudinary.com/argustwo/image/upload/v1595357921/uxu2a0dtclucojsznbnv.jpg" height="150" alt="Pirate">
           </a>

@@ -2,8 +2,9 @@ class SessionsController < ApplicationController
   include Secured
 
   layout "welcome"
-
-   skip_before_action :authorized, :only => [:new, :create, :github, :welcome]
+  skip_before_action :authorized, :only => [:new, :create, :github]
+  skip_before_action :require_login, :only => [:new, :create, :github]
+  skip_before_action :set_vars, :only => [:new, :create, :github]
 
   def new
     @user = User.new
@@ -11,7 +12,6 @@ class SessionsController < ApplicationController
 
   def github
     @user = User.find_by_email(auth_hash.info.email)
-    debugger
     if @user
       session[:user_id] = @user.id
       redirect_to user_path(@user)
@@ -38,18 +38,18 @@ class SessionsController < ApplicationController
     redirect_to '/'
   end
 
-  protected
+  private
 
   def user_params
   params.require(:user).permit(:name, :email, :location, :password, :password_confirmation)
   end
 
-  def authorized
-     return head(:forbidden) unless session.include? :user_id
-  end
-
   def auth_hash
     request.env['omniauth.auth']
+  end
+
+  def require_login
+  redirect_to :root_path, notice: "Please log in or sign up" unless current_user
   end
 
 end

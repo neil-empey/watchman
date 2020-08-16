@@ -1,227 +1,210 @@
+
+<% %>
 <!DOCTYPE html>
 <html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>3 Column, Right Menus</title>
-<style type="text/css">
-  background-color:#1d1d1d !important;
+ <head>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <title>3 Column, Right Menus</title>
+   <style type="text/css">
+
+     h4 {text-align: center;}
+       div {text-align: center;}
+
+     body{
+       background-color:#1d1d1d !important;
+       color #00060f;
+       margin:0;
+       padding:5px;
+       font-family: Sans-Serif;
+       line-height: 1.5em;
+     }
+
+     #header {
+
+       background: #0000A0;
+       height: 3px;
+     }
+
+     #header h1 {
+
+       margin: 0;
+       padding-top: 15px;
+       padding-bottom: 75px;
+
+     }
+
+     #mainwrapper {
+       overflow: hidden;
+     }
+
+     #contentwrapper{
+       float: left;
+       width: 99%;
+       overflow: hidden;
+     }
+
+     #content {
+       margin-right: 305px; /* Width of '#rightmenu' and '#leftmenu' combined. */
+       width: 50%;
+       padding-bottom: 10px;
+       margin-bottom: 90px;
+       overflow: hidden;
+     }
+
+     #leftmenu {
+       float: left;
+       width: 275px;
+       margin-left: -500px; /* Width of '#rightmenu' and '#leftmenu' combined. */
+       padding-bottom: 25px;
+       margin-bottom: 100px;
+       background: #737CA1;
+       overflow: hidden;
+     }
+
+     #rightmenu {
+       float: left;
+       width: 100px;
+       margin-left: -210px;
+       padding-bottom: 91px;
+       margin-bottom: 95px;
+       background: #646D7E;
+       overflow: hidden;
+     }
+
+     #footer{
+       clear: left;
+       width: 100%;
+       background: #646D7E;
+       text-align: center;
+       padding: 5px;
+       overflow: hidden;
+     }
+
+     .innertube{
+       color #00060f;
+       margin: 25px; /* Padding for content */
+       margin-top: 5px;
+       margin-bottom: 35px;
+       overflow: hidden;
+     }
 
 
-  h1 {text-align: center;}
-  div {text-align: center;}
-</style>
-</head>
+     p {
+       color: #00060f;
+     }
+
+     nav ul {
+       list-style-type: none;
+       margin: 0;
+       padding: 0;
+       overflow: hidden;
+     }
+
+     nav ul a {
+
+       text-decoration: none;
+       overflow: hidden;
+     }
+
+   </style>
+ </head>
+ <body>
+     <header id="header">
+       </header>
 
 
-<!-- Page Content -->
-    <div class="container">
+<div id="mainwrapper">
+    <% @hood = Neighborhood.find_by_id(params["id"]) %>
+    <% @hood.reports.each_with_index do |report, i| %>
+    <div class="innertube", style="color:black;">
+         <% user = User.find_by_id(report.user_id) %>
+         <h1>Neighborhood Report <%= report.id %>:  for <%= report.address %></h1>
+       </div>
 
-      <!-- Page Heading -->
-      <% @hood = Neighborhood.find_by_id(current_user.neighborhood.id) %>
-      <h1 "text-align: center;", style="color:DarkBlue;">         Neighborhood <%= @hood.id %></h1>
-
-
-
-      <!-- Project One -->
-      <% @hood.users.each do |user| %>
-      <% reports = Report.all.select {|report| report.user_id == user.id} %>
-      <% reports.each_with_index do |report, i| %>
-      <% @report = report %>
-      <% @user = user %>
-      <div class="innertube">
-        <div class="numbertext"></div>
-          <head>
-            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-            <title>3 Column, Right Menus</title>
-            <style type="text/css">
-
-              body{
-                background-color:#1d1d1d !important;
-                color #00060f;
-                margin:0;
-                padding:0;
-                font-family: Sans-Serif;
-                line-height: 1.5em;
-              }
-
-              #header {
-                background: #0000A0;
-                height: 9px;
-              }
-
-              header h1 {
-                text-align: center;
-                margin: 0;
-                padding-top: 15px;
-                padding-bottom: 95px;
-              }
-
-              #mainwrapper {
-                overflow: hidden;
-              }
-
-              #contentwrapper{
-                float: left;
-                width: 100%;
-              }
-
-              #content {
-                margin-right: 305px; /* Width of '#rightmenu' and '#leftmenu' combined. */
-                padding-bottom: 10px;
-                margin-bottom: 90px;
-              }
-
-              #leftmenu {
-                float: left;
-                width: 275px;
-                margin-left: -500px; /* Width of '#rightmenu' and '#leftmenu' combined. */
-                padding-bottom: 25px;
-                margin-bottom: 100px;
-                background: #737CA1;
-              }
-
-              #rightmenu {
-                float: left;
-                width: 100px;
-                margin-left: -210px;
-                padding-bottom: 91px;
-                margin-bottom: 95px;
-                background: #646D7E;
-                overflow: hidden;
-              }
-
-              #footer{
-                clear: left;
-                width: 100%;
-                background: #646D7E;
-                text-align: center;
-                padding: 5px 0;
-              }
-
-              .innertube{
-                color #00060f;
-                margin: 25px; /* Padding for content */
-                margin-top: 5px;
-                margin-bottom: 35px;
-                overflow: hidden;
-              }
+     </div>
 
 
-              p {
-                color: #00060f;
-              }
+     <div id="contentwrapper">
+       <div id="content">
+         <div class="innertube", style="color:black;">
+           <h2>Incident Date: <%= report.incident_date %></h2><br>
+           <h5>This report is autogenerated on behalf of </h5> <h3><%= report.first_name %> <%= report.last_name %>. </h3><br>
+           <h5> Crime Summary: </h5><br>
+         <p><%= report.summary %> </div>
+       </div>
+       <br>
+     </div>
 
-              nav ul {
-                list-style-type: none;
-                margin: 0;
-                padding: 0;
-              }
+     <nav id="rightmenu">
+       <div class="innertube">
+         <ul>
+      <h4 style="centered">
+          <li> W</li>
+          <hr style="height:3px;border-width:0;color:gray;background-color:gray">
+           <li> A </li>
+           <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+           <li>  T </li>
+           <hr style="height:3px;border-width:0;color:gray;background-color:gray">
+           <li> C </li>
+           <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+           <li>  H </li>
+           <hr style="height:3px;border-width:0;color:gray;background-color:gray">
+           <li> M </li>
+           <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+           <li>  A </li>
+           <hr style="height:3px;border-width:0;color:gray;background-color:gray">
+           <li> N </li>
+         </h4>
+         </ul>
+       </div>
+     </nav>
 
-              nav ul a {
-                color: darkblue;
-                text-decoration: none;
-              }
+     <nav id="leftmenu">
+       <div class="innertube">
+         <h3>Suspects</h3>
+         <hr style="height:4px;border-width:0;color:gray;background-color:gray">
+         <% suspect_images = report.suspect_data.split('##') %>
+         <% suspect_images.each do |pic| %>
+         <% if pic != "" %>
+         <ul>
+           <img src=<%= pic %> alt="suspect_images" style="width:145px;height:145px;">
+         </ul>
+         <% end %>
+         <% end %>
+         <h3>Suspect Vehicles</h3>
+         <hr style="height:5px;border-width:0;color:gray;background-color:gray">
+         <% suspect_vehicles = report.vehicle_data.split('##') %>
+         <% suspect_vehicles.each do |pic| %>
+         <% if pic != "" %>
+         <ul>
+           <img src=<%= pic %> alt="suspect_vehicles" style="width:145px;height:145px;">
+         </ul>
+         <% end %>
+         <% end %>
+       </div>
+     </nav>
+   </div>
+   <br>
+   <footer id="footer">
+     <hr style="height:7px;border-width:0;color:gray;background-color:gray">
+     <div class="innertube">
+       <p>Neighborhood: <%= user.neighborhood_id %>....  Email: <%= user.email %>.... Telephone Number: <%= report.telephone_number %></p>
+     </div>
+     <hr style="height:7px;border-width:0;color:gray;background-color:gray">
+   </footer>
+   <br>
+   <br>
+   <div>
+   <h5 style="color:black;">Report: <%= report.id %> comments </h5>
+   
+   <a class="btn btn-primary" href="/reports/<%= report.id %>/comments/new">Add Comment</a>
 
-            </style>
-          </head>
+</div>
+ <hr style="height:5px;border-width:0;color:gray;background-color:DarkBlue">
+<% end %>
+<br>
+</body>
+<br>
+<br>
 
-          <body>
-              <header id="header">
-                </header>
-                </div>
-                </div>
-                <div id="mainwrapper">
-                <div class="innertube", style="color:black;">
-
-                  <h1>Neighborhood Report <%= i + 1 %>:  for <%= @report.address %></h1>
-                </div>
-
-            <div id="mainwrapper">
-
-              <div id="contentwrapper">
-                <div id="content">
-                  <div class="innertube", style="color:black;">
-                    <h2>Incident Date: <%= @report.incident_date %></h2><br>
-                    <h4>This report is autogenerated on behalf of </h4> <h3><%= @report.first_name %> <%= @report.last_name %>. </h3><br>
-                    <h4> Crime Summary: </h4>
-                    <hr style="height:1px;border-width:0;color:gray;background-color:blue">
-                  <h5><%= @report.summary %> </h5></div>
-                </div>
-              </div>
-
-              <nav id="rightmenu">
-                <div class="innertube">
-                  <ul>
-               <h4 style="centered">
-                   <li> W</li>
-                   <hr style="height:3px;border-width:0;color:gray;background-color:gray">
-                    <li> A </li>
-                    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
-                    <li>  T </li>
-                    <hr style="height:3px;border-width:0;color:gray;background-color:gray">
-                    <li> C </li>
-                    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
-                    <li>  H </li>
-                    <hr style="height:3px;border-width:0;color:gray;background-color:gray">
-                    <li> M </li>
-                    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
-                    <li>  A </li>
-                    <hr style="height:3px;border-width:0;color:gray;background-color:gray">
-                    <li> N </li>
-                  </h4>
-                  </ul>
-                </div>
-              </nav>
-
-              <nav id="leftmenu">
-                <div class="innertube">
-                  <h3>Suspects</h3>
-                  <% suspect_images = @report.suspect_data.split('##') %>
-                  <% suspect_images.each do |pic| %>
-                  <% if pic != "" %>
-                  <ul>
-                    <img src=<%= pic %> alt="suspect_images" style="width:145px;height:145px;">
-                  </ul>
-                  <% end %>
-                  <% end %>
-                  <h3>Suspect Vehicles</h3>
-                  <% suspect_vehicles = @report.vehicle_data.split('##') %>
-                  <% suspect_vehicles.each do |pic| %>
-                  <% if pic != "" %>
-                  <ul>
-                    <img src=<%= pic %> alt="suspect_vehicles" style="width:145px;height:145px;">
-                  </ul>
-                  <% end %>
-                  <% end %>
-                </div>
-              </nav>
-            </div>
-              <footer id="footer">
-                <div class="innertube">
-                  <p>Neighborhood: <%= @hood.id %>....  Email: <%= @user.email %>.... Telephone Number: <%= @report.telephone_number %></p>
-                    <hr style="height:1px;border-width:0;color:gray;background-color:blue">
-                </div>
-              </footer>
-
-          </body>
-        </div>
-        <br>
-        <div class="innertube", style="color:black;">
-          <h3>Report: <%= @report.id %> comments</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
-          <a class="btn btn-primary" href="/reports/<%= @report.id %>/comments/new">Add Comment</a>
-        </div>
-      </div>
-      <br>
-      <br>
-      <!-- /.row -->
-        <% end %>
-      <% end %>
-      <br>
-      <br>
-      <hr>
-
-      <hr>
-      </html>
-
-    <!-- /.container -->
+</html>

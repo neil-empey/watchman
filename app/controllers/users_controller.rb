@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   layout "user", except: [:new]
 
   skip_before_action :authorized, :only => [:new, :create]
+  skip_before_action :require_login, :only => [:new, :create]
+  skip_before_action :set_vars, :only => [:new, :create]
 
   def new
     @user = User.new
@@ -55,5 +57,9 @@ class UsersController < ApplicationController
   def auth_hash
     data = request.env['omniauth.auth']
     data
+  end
+
+  def require_login
+  redirect_to :root_path, notice: "Please log in or sign up" unless current_user
   end
 end

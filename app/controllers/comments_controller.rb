@@ -1,9 +1,10 @@
 class CommentsController < ApplicationController
   layout "user"
+  before_action :require_login, :set_vars
 
   def index
-    if params["id"] && @report = Report.find_by_id(params["id"])
-      @comment = @report.comment
+    if params["id"]
+      @user = User.find_by_id(current_user.id)
     else
       @error = "Report is Unavailable" if params["id"]
       @comment = Comment.all

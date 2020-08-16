@@ -92,6 +92,8 @@
 
              p {
                color: #00060f;
+
+               width: 86%;
              }
 
              nav ul {
@@ -121,13 +123,14 @@
 
 
 
-          <header id="header">
-            </header>
-            </div>
-     </div>
+
      <body>
 
+       <header id="header">
+         </header>
 
+
+  <div id="mainwrapper">
 
 
 
@@ -138,7 +141,7 @@
             <div id="content">
               <div class="innertube", style="color:black;">
 
-            <h1 style="color:black;">Neighborhood Report <%= report.id %>:  for <%= report.address %></h1>
+            <h1 style="color:black;">Neighborhood Report <%= report.id %>:  <%= report.address %></h1>
 
               <hr style="height:7px;border-width:100%;color:gray;background-color:black">
             <br>
@@ -155,7 +158,8 @@
               <h5> Crime Summary: </h5>
       <hr style="width:50%;height:2px;border-width:0;color:blue;background-color:blue">
 
-            <p><%= report.summary %> </div>
+            <p><%= report.summary %> </p>
+          </div>
           </div>
 
         </div>
@@ -221,7 +225,7 @@
         <footer id="footer">
           <hr style="height:7px;border-width:0;color:gray;background-color:gray">
           <div class="innertube">
-            <p>Neighborhood: <%= @user.neighborhood_id %>....  Email: <%= @user.email %>.... Telephone Number: <%= report.telephone_number %></p>
+            <h5>Neighborhood: <%= @user.neighborhood_id %>....  Email: <%= @user.email %>.... Telephone Number: <%= report.telephone_number %></h5>
             </div>
 
           <hr style="height:7px;border-width:0;color:gray;background-color:gray">

@@ -1,7 +1,7 @@
 class VehiclesController < ApplicationController
-  
-  layout "user"
 
+  layout "user"
+  before_action :require_login
 
   def index
     if params[:report_id]

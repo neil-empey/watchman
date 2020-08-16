@@ -1,6 +1,7 @@
 class Neighborhood < ApplicationRecord
-  has_many :reports, through: :users
   has_many :users
+  has_many :reports, through: :users
+
 
   def new
 
