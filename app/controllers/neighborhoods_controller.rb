@@ -6,4 +6,9 @@ class NeighborhoodsController < ApplicationController
     @user = User.find_by_id(current_user.id)
     @hood = Neighborhood.find_by_id(@user.neighborhood)
   end
+
+  def show
+
+  end
+
 end

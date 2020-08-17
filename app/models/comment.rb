@@ -3,6 +3,8 @@ class Comment < ApplicationRecord
 
   validates :content, presence: true, length: { maximum: 50, too_long: "%{count} characters is the maximum allowed" }
 
+  scope :all_comments, -> (report) {where(report_id: report.id)}
+
   def new
     @comment
   end

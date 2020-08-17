@@ -195,12 +195,27 @@
    <br>
    <br>
    <div>
-   <h5 style="color:black;">Report: <%= report.id %> comments </h5>
-   
+   <h3 style="color:black;">Report: <%= report.id %> comments </h3>
+   <br>
+   <% @comments = Comment.select("content", "user_id").all_comments(report) %>
+   <% if @comments.length < 1 %>
+   <h5 style="color:red"> This report has no comments </h5>
+   <% end %>
+   <br>
+   <% @comments.each_with_index do |comment, i| %>
+   <p style="color:Indigo"> Neighbor <%= comment.user_id %> commented </p>
+   <h5 style="color:DarkBlue"><%=%> <%= comment.content %> </h5>
+   <hr style="width:37%;height:1px;border-width:1px;color:gray;background-color:green">
+   <br>
+   <% end %>
    <a class="btn btn-primary" href="/reports/<%= report.id %>/comments/new">Add Comment</a>
+   <br>
+
 
 </div>
- <hr style="height:5px;border-width:0;color:gray;background-color:DarkBlue">
+<br>
+ <hr style="height:3px;border-width:1px;color:gray;background-color:DarkBlue">
+ <br>
 <% end %>
 <br>
 </body>

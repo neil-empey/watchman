@@ -4,7 +4,6 @@ class Neighborhood < ApplicationRecord
 
 
   def new
-
   end
 
   def create

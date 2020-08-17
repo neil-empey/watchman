@@ -18,14 +18,12 @@ class CommentsController < ApplicationController
     else
       @error = "Report is unavailable for comment" if params["id"]
     end
-
   end
 
   def create
-      @comment = Comment.create(comments_params)
-      debugger
+      @comment = comments_params
       if @comment.save
-        redirect_to "/neighborhoods/#{current_user.neighborhood.id}/reports/#{@comment.report_id}"
+        redirect_to "/neighborhoods/#{current_user.neighborhood.id}/users"
       else
         render :new
       end
@@ -37,13 +35,8 @@ class CommentsController < ApplicationController
   private
 
   def comments_params
-    params_hash = {}
-    params.permit("content", "id")
-    params_hash[:user_id] = current_user.id
-    params_hash[:report_id] = params["id"]
-    params_hash[:content] = params["content"]
-    params_hash
-
+    params.permit("authenticity_token", "content", "id", "commit")
+    comment = Comment.create(:content => params["content"], :user_id => current_user.id, :report_id => params["id"])
+    comment
   end
-
 end
