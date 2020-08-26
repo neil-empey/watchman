@@ -2,22 +2,22 @@ class SessionsController < ApplicationController
   include Secured
 
   layout "welcome"
-  skip_before_action :authorized, :only => [:new, :create, :github]
-  skip_before_action :require_login, :only => [:new, :create, :github]
-  skip_before_action :set_vars, :only => [:new, :create, :github]
+  skip_before_action :authorized, :only => [:new, :create, :google_auth, :welcome]
+  skip_before_action :require_login, :only => [:new, :create, :google_auth, :welcome]
+  skip_before_action :set_vars, :only => [:new, :create, :google_auth, :welcome]
+
 
   def new
     @user = User.new
   end
 
-  def github
-    @user = User.find_by_email(auth_hash.info.email)
-    if @user
+  def google_auth
+    @user = User.find_or_create_by_omniauth(auth)
+    if @user.save
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
-      flash[:alert] = "Invalid credentials. Please check your email and password."
-      redirect_to '/'
+      render 'users/new'
     end
   end
 

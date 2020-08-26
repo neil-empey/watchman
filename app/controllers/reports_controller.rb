@@ -22,7 +22,10 @@ class ReportsController < ApplicationController
   def create
     @user = current_user
     @report = @user.reports.build(report_params)
+
     if @report.save
+        @hood = NeighborhoodReportLocation.create("location" => @report.address, "suspects" => @report.suspect_data, "neighborhood_id" => current_user.neighborhood_id, "report_id" => @report.id)
+        
     redirect_to "/users/#{@user.id}/reports/#{@report.id}"
     else
       render :new

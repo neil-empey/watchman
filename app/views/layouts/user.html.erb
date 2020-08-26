@@ -73,7 +73,7 @@
 
       </nav>
         <hr style="height:13px;border-width:0;color:gray;background-color:black">
-      <br>
+
       <div>
         <% if flash[:message] %>
           <%= flash[:message] %>
@@ -86,6 +86,8 @@
   <%= yield %>
 
   <br>
-  <br>
   <h5><%= button_to "Logout", '/logout', method: :post%></h5>
+  <br>
+  <br>
+  
   </html>

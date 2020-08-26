@@ -118,7 +118,7 @@
     <% @hood.reports.each_with_index do |report, i| %>
     <div class="innertube", style="color:black;">
          <% user = User.find_by_id(report.user_id) %>
-         <h1>Neighborhood Report <%= report.id %>:  for <%= report.address %></h1>
+         <h1>Neighborhood Report <%= report.id %>:   <%= report.address %></h1>
        </div>
 
      </div>

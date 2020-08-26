@@ -19,15 +19,9 @@ class ImagesController < ApplicationController
       @user = current_user
     end
 
-    def edit
-    end
-
     def create
       Image.add(current_user.id)
       redirect_to "/users/#{current_user.id}"
-    end
-
-    def update
     end
 
     def destroy

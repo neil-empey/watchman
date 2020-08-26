@@ -4,10 +4,9 @@
   <h3 style="color:DarkBlue;">Your currently logged in</h3>
     <% @user = current_user %>
     <%= button_to "Home", user_path(@user), method: :get%><br>
+    <%= button_to "Logout", '/logout', method: :post%>
       <% else %>
         <%= button_to "Login", '/signin', method: :get%>
         <%= button_to "Sign Up", '/signup', method: :get%>
       <%end%>
       <br>
-
-      <%= button_to "Logout", '/logout', method: :post%>

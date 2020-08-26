@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_14_004959) do
+ActiveRecord::Schema.define(version: 2020_08_26_010906) do
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
@@ -79,6 +79,16 @@ ActiveRecord::Schema.define(version: 2020_08_14_004959) do
     t.string "leftEyeUp"
     t.string "confidence"
     t.index ["user_id"], name: "index_images_on_user_id"
+  end
+
+  create_table "neighborhood_bulletins", id: false, force: :cascade do |t|
+    t.integer "neighborhood_id", null: false
+    t.integer "user_id", null: false
+    t.string "location"
+    t.string "suspects"
+    t.text "note"
+    t.index ["neighborhood_id", "user_id"], name: "index_neighborhood_bulletins_on_neighborhood_id_and_user_id"
+    t.index ["user_id", "neighborhood_id"], name: "index_neighborhood_bulletins_on_user_id_and_neighborhood_id"
   end
 
   create_table "neighborhoods", force: :cascade do |t|

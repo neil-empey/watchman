@@ -62,7 +62,9 @@ Rails.application.configure do
   ENV["aws_key"] = 'AKIA2MPVCMTYA53SM47N'
   ENV["aws_secret"] = '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'
   ENV["ocr"] = "OCRK6543898A"
-
+  ENV['GOOGLE_CLIENT_ID'] = "754084312895-h3rl939pseb0adm1irn5m4r2lmnugg5o.apps.googleusercontent.com"
+  ENV['GOOGLE_CLIENT_SECRET'] = "OtuXdMe62vvqBmd7BAvASZiW"
+  ENV["X-Access-Token"] = "MyE9m72PGaLjIlvrhbWirxaXUPTI118kd1BA"
   # Raises error for missing translations.
   # config.action_view.raise_on_missing_translations = true
 

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  resources :neighborhood_report_locations
   root 'sessions#welcome'
 
   get '/signup' => 'users#new'
@@ -13,7 +14,7 @@ Rails.application.routes.draw do
 
   get '/users/:id' => 'users#show'
 
-  get '/auth/github/callback' => 'sessions#github'
+  get '/auth/:provider/callback', to: 'sessions#google_auth'
 
   get '/vehicles' => 'vehicles#show'
   get '/vehicles/new' => 'vehicles#new'
@@ -32,7 +33,7 @@ Rails.application.routes.draw do
 
   get '/info' => 'dashboard#show'
 
-  get '/users/:user_id/comments' => 'comments#index' 
+  get '/users/:user_id/comments' => 'comments#index'
 
 
   resources :reports

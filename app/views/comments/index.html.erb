@@ -4,14 +4,14 @@
   </div>
 <% end %>
 
-<h2 style="color:DarkBlue;"> Your Comments </h2>
+<h2 style="color:SpringGreen;"> Your Comments </h2>
 <hr style="width:30%;height:3px;color:gray;background-color:DodgerBlue"><br>
 <%if @user.comments.length < 1%>
 <% flash[:msg] = "You currently have no comments" %>
 <%end%>
 <% if @user.comments.length >= 1 %>
 <% @user.comments.each_with_index do |comment, i| %>
-<h4 style="color:DarkBlue;"><%= i + 1 %>. <%= comment.content %></h4> <h5 style="color:DarkBlue;">on report
+<h4 style="color:Blue;"><%= i + 1 %> . <%= comment.content %></h4> <h5 style="color:DarkBlue;">on report
 <% @report = Report.find_by_id(comment.report_id) %>
 <%= @report.id %> </h5><p style="color:DarkBlue;"> by </p> <% user = User.find_by_id(@report.user_id) %> <h4 style="color:DarkBlue;"><%= user.name %></h4>
 <hr style="width:50%;,height:5px;color:gray;background-color:DodgerBlue">

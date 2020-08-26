@@ -4,7 +4,7 @@
 <% @comment = Comment.new %>
 <br>
 <br>
-<h4 style="color:black; text-align: center;"> CAREFUL!  comments cannot be undone.</h4>
+<h4 style="color:Red; text-align: center;"> CAREFUL!  comments cannot be undone.</h4>
 <br>
   <%= form_with(url: "/reports/#{@report.id}/comments", method: "post")  do %>
   <h4 style="color:black; text-align: center;"><%= label_tag(:content, "Enter Comment") %></h4>

@@ -20,9 +20,10 @@ gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
+
+gem 'omniauth-google-oauth2'
 gem 'bcrypt', '~> 3.1.7'
 gem 'omniauth'
-gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
 gem 'ocr_space'
 gem 'aws-sdk-rekognition'
 gem 'cloudinary'
@@ -39,6 +40,7 @@ gem 'simple_form'
 gem 'carousel'
 gem 'wicked_pdf'
 gem 'omniauth-openid'
+
 
 
 # Use Active Storage variant
