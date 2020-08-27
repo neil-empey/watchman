@@ -1,6 +1,6 @@
 class Vehicle < ApplicationRecord
   belongs_to :user
-  has_many :reports, through: :users
+
 
   require 'ocr_space'
 
@@ -50,7 +50,7 @@ class Vehicle < ApplicationRecord
         response = response.body
 
         data_carnet << JSON.parse(response)
-        debugger
+
 
 
       data["vehicles"] = data_v
@@ -87,7 +87,7 @@ class Vehicle < ApplicationRecord
         auto = @info["vehicles"][i]
         ocr = @info["ocr"][i]
 
-        debugger
+
 
         make_name = carnet["objects"][0]["vehicleAnnotation"]["attributes"]["system"]["make"]["name"]
         model_name = carnet["objects"][0]["vehicleAnnotation"]["attributes"]["system"]["model"]["name"]

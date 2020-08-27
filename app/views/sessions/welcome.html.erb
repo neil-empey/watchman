@@ -1,7 +1,8 @@
 <h1 style="color:DarkBlue;">Welcome</h1>
 <br>
   <% if logged_in? %>
-  <h3 style="color:DarkBlue;">Your currently logged in</h3>
+  <h3 style="color:SlateBlue;">your already logged in...</h3>
+  <br>
     <% @user = current_user %>
     <%= button_to "Home", user_path(@user), method: :get%><br>
     <%= button_to "Logout", '/logout', method: :post%>

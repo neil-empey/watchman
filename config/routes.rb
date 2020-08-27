@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   get '/images' => 'images#show'
   get '/images/new' => 'images#new'
   post '/images' => 'images#create'
+  get '/images/:id/edit' => 'images#edit'
+  patch '/images/:id' => 'images#update'
 
   get "/user/:id/reports" => 'reports#index'
 
@@ -31,16 +33,11 @@ Rails.application.routes.draw do
 
   get "/neighborhoods/:id/users" => 'neighborhoods#show'
 
-  get '/info' => 'dashboard#show'
-
   get '/users/:user_id/comments' => 'comments#index'
 
+  get '/bulletin/:user_id/new' => 'neighborhood_bulletin#new'
 
   resources :reports
-
-  resources :users do
-    resources :comments_reports, only: [:index]
-  end
 
   resources :users do
     resources :reports, only: [:show, :index]

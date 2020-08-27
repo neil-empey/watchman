@@ -24,6 +24,10 @@ class ImagesController < ApplicationController
       redirect_to "/users/#{current_user.id}"
     end
 
+    def edit
+
+    end
+
     def destroy
       @image.destroy
       respond_to do |format|

@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :vehicles
   has_many :images
   has_many :reports
-  has_many :neighborhood_bulletins
+  
 
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true

@@ -1,7 +1,5 @@
 class Image < ApplicationRecord
   belongs_to :user
-  has_many :reports, through: :users
-  has_many :suspects, through: :neighborhood_bulletins
 
   def self.cloud_search(current_user)
   Cloudinary::Search
