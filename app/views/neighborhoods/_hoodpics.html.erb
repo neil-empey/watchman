@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Slideshow Images</title>
+    <style>
+      * {
+        box-sizing: border-box
+      }
+      body {
+        font-family: Verdana, sans-serif;
+        margin: 0
+      }
+      .mySlides {
+        display: none
+      }
+      img {
+        vertical-align: middle;
+      }
+      .slideshow-container {
+        max-width: 300px;
+        position: relative;
+        margin: auto;
+      }
+      /* Next & previous buttons */
+      .prev,
+      .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        padding: 16px;
+        margin-top: -22px;
+        color: RoyalBlue;
+        font-weight: bold;
+        font-size: 22px;
+        transition: 0.9s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+      }
+      /* Position the "next button" to the right */
+      .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+      }
+      /* On hover, add a black background color with a little bit see-through */
+      .prev:hover,
+      .next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+      /* Caption text */
+      .text {
+        color: RoyalBlue;
+        font-size: 21px;
+        padding: 8px 12px;
+        position: relative;
+        bottom: 8px;
+        width: 100%;
+        text-align: center;
+      }
+      /* Number text (1/3 etc) */
+      .numbertext {
+        color: #ffffff;
+        font-size: 0px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+      }
+      /* The dots/bullets/indicators */
+      .dot {
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #999999;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 1.0s ease;
+      }
+      .active,
+      .dot:hover {
+        background-color: #111111;
+      }
+      /* Fading animation */
+      .fade {
+        -webkit-animation-name: fade;
+        <% @hood = Neighborhood.find_by_id(current_user.neighborhood_id) %>
+        -webkit-animation-duration: <%= (@hood.images.length + @hood.vehicles.length) * 10 %>s;
+        animation-name: fade;
+        animation-duration: <%= (@hood.images.length + @hood.vehicles.length) * 10 %>s;
+      }
+      @-webkit-keyframes fade {
+        from {
+          opacity: 1
+        }
+        to {
+          opacity: 1
+        }
+      }
+      @keyframes fade {
+        from {
+          opacity: .8
+        }
+        to {
+          opacity: 1
+        }
+      }
+      /* On smaller screens, decrease text size */
+      @media only screen and (max-width: 225px) {
+        .prev,
+        .next,
+        .text {
+          font-size: 14px
+        }
+      }
+    </style>
+  </head>
+  <% @hood = Neighborhood.find_by_id(current_user.neighborhood_id) %>
+  <% @hood.images.each_with_index do |pic, i| %>
+
+  <body>
+
+    <div class="slideshow-container">
+      <div class="mySlides fade">
+        <div class="numbertext"><%= i + 1 %> / <%= @hood.images.length %></div>
+        <img src=<%= "#{pic.url}" %> style="width:100%">
+        <div class="text"><%= "#{pic.name}" %>
+          <div>
+           Gender: <%= "#{pic.gender}" %>
+         </div>
+         <div>
+           Age Range: <%= "#{pic.age_low}" %> - <%= "#{pic.age_high}" %>
+         </div>
+         </div>
+      </div>
+    <% end %>
+
+    </div>
+    <br>
+    <div style="text-align:center">
+
+
+    </div>
+
+    <% @hood = Neighborhood.find_by_id(current_user.neighborhood_id) %>
+    <% @hood.vehicles.each_with_index do |car, j| %>
+    <div class="slideshow-container">
+      <div class="mySlides fade">
+        <div class="numbertext"><%= j + 1 %> / <%= @hood.vehicles.length %></div>
+        <img src=<%= "#{car.url}" %> style="width:100%">
+        <div class="text"><%= "#{car.make}" %>
+          <div>
+           Model: <%= "#{car.model}" %>
+         </div>
+         <div>
+           Color: <%= "#{car.color}" %>
+         </div>
+         <div>
+           Plate State: <%= "#{car.background}" %>
+         </div>
+         <div>
+           Plate Number: <%= "#{car.plate}" %>
+         </div>
+         </div>
+      </div>
+    <% end %>
+
+    </div>
+    <br>
+    <div style="text-align:center">
+
+
+    </div>
+
+
+    <script>
+      var slideIndex = 0;
+      showSlides();
+      function showSlides() {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        for(i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if(slideIndex > slides.length) {
+          slideIndex = 1
+        }
+        slides[slideIndex - 1].style.display = "block";
+        setTimeout(showSlides, 2000); // Change image every 2 seconds
+      }
+    </script>
+  </body>
+</html>

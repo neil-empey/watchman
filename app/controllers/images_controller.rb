@@ -28,6 +28,11 @@ class ImagesController < ApplicationController
 
     end
 
+    def update
+      image_params
+      redirect_to '/images'
+    end
+
     def destroy
       @image.destroy
       respond_to do |format|
@@ -43,6 +48,8 @@ class ImagesController < ApplicationController
 
       # Only allow a list of trusted parameters through.
       def image_params
-        params.fetch(:image, {})
+        params.permit("label", "id", "_method", "authenticity_token", "commit")
+        @image = Image.find_by_id(params["id"])
+        @image.label = params["label"]
       end
   end

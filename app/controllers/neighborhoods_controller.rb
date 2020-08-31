@@ -1,5 +1,5 @@
 class NeighborhoodsController < ApplicationController
-  layout "user"
+  layout "user", except: [:_hoodpics]
   before_action :require_login
 
   def index

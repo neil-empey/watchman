@@ -1,9 +1,11 @@
 class Report < ApplicationRecord
   belongs_to :user
-  has_many :comments
+  belongs_to :neighborhood
+  has_many :report_comments
+  has_many :comments, through: :report_comments
   has_many :users
-  has_many :vehicles, through: :users
-  has_many :images, through: :users
+  has_many :vehicles, through: :user
+  has_many :images, through: :user
 
 
 

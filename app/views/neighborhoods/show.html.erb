@@ -108,15 +108,15 @@
 
    </style>
  </head>
+
  <body>
      <header id="header">
+
        </header>
+
+
        <div>
          <% @hood = Neighborhood.find_by_id(params["id"]) %>
-         
-
-
-
 
 <div id="mainwrapper">
     <% @hood.reports.each_with_index do |report, i| %>
@@ -223,6 +223,9 @@
 <% end %>
 <br>
 </body>
+
+<%= render partial: "hoodpics" %>
+<br>
 <br>
 <br>
 

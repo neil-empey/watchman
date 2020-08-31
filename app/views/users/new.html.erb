@@ -16,11 +16,11 @@
     <%= render partial: "layouts/errors", locals: {object: @user} %>
 
     <%= simple_form_for @user do |f| %>
-    <h5 style="color:DarkBlue;"><%= f.input :name, label: 'Name', error: 'Name is a required field' %></h5>
-    <h5 style="color:DarkBlue;"><%= f.input :email, label: 'Email', as: :email, error: 'Email is required field' %></h5>
-    <h5 style="color:DarkBlue;"><%= f.input :location, label: 'Zipcode', error: 'Required field' %></h5>
-    <h5 style="color:DarkBlue;"><%= f.input :password, label: 'Password', as: :password %></h5>
-    <h5 style="color:DarkBlue;"><%= f.input :password_confirmation, label: 'Confirm Password', as: :password %></h5>
+    <h5 style="color:DarkCyan;"><%= f.input :name, label: 'Name', error: 'Name is a required field' %></h5>
+    <h5 style="color:DarkCyan;"><%= f.input :email, label: 'Email', as: :email, error: 'Email is required field' %></h5>
+    <h5 style="color:DarkCyan;"><%= f.input :location, label: 'Zipcode', error: 'Required field' %></h5>
+    <h5 style="color:DarkCyan;"><%= f.input :password, label: 'Password', as: :password %></h5>
+    <h5 style="color:DarkCyan;"><%= f.input :password_confirmation, label: 'Confirm Password', as: :password %></h5>
     <div style="background-color:orange">
     <%= f.button :submit, "Join Watchman", class: "my-button" %>
   </div>

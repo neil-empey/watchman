@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  resources :posts
   resources :neighborhood_report_locations
   root 'sessions#welcome'
 
@@ -20,11 +21,12 @@ Rails.application.routes.draw do
   get '/vehicles/new' => 'vehicles#new'
   post 'vehicles' => 'vehicles#create'
 
-  get '/images' => 'images#show'
-  get '/images/new' => 'images#new'
   post '/images' => 'images#create'
+  get '/images/new' => 'images#new'
   get '/images/:id/edit' => 'images#edit'
+  get '/images' => 'images#show'
   patch '/images/:id' => 'images#update'
+
 
   get "/user/:id/reports" => 'reports#index'
 
@@ -35,7 +37,7 @@ Rails.application.routes.draw do
 
   get '/users/:user_id/comments' => 'comments#index'
 
-  get '/bulletin/:user_id/new' => 'neighborhood_bulletin#new'
+  put
 
   resources :reports
 

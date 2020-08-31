@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_26_224424) do
+ActiveRecord::Schema.define(version: 2020_08_30_224814) do
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
@@ -72,26 +72,26 @@ ActiveRecord::Schema.define(version: 2020_08_26_224424) do
     t.string "compare_result"
     t.string "label"
     t.integer "user_id", null: false
-    t.integer "report_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "leftEyeRight"
     t.string "leftEyeUp"
     t.string "confidence"
+    t.integer "neighborhood_id"
     t.index ["user_id"], name: "index_images_on_user_id"
-  end
-
-  create_table "neighborhood_comments", id: false, force: :cascade do |t|
-    t.integer "neighborhood_id", null: false
-    t.integer "comment_id", null: false
-    t.boolean "like"
-    t.text "post"
   end
 
   create_table "neighborhoods", force: :cascade do |t|
     t.string "location"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "report_comments", id: false, force: :cascade do |t|
+    t.integer "report_id", null: false
+    t.integer "comment_id", null: false
+    t.integer "like"
+    t.integer "dislike"
   end
 
   create_table "reports", force: :cascade do |t|
@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 2020_08_26_224424) do
     t.text "suspect_data"
     t.text "vehicle_data"
     t.string "incident_date"
+    t.integer "neighborhood_id"
     t.index ["user_id"], name: "index_reports_on_user_id"
   end
 
@@ -127,12 +128,12 @@ ActiveRecord::Schema.define(version: 2020_08_26_224424) do
     t.string "color"
     t.text "background"
     t.integer "user_id"
-    t.integer "report_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "year"
     t.string "url"
     t.string "public_id"
+    t.integer "neighborhood_id"
     t.index ["user_id"], name: "index_vehicles_on_user_id"
   end
 

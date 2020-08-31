@@ -1,5 +1,7 @@
 class Vehicle < ApplicationRecord
   belongs_to :user
+  belongs_to :neighborhood
+
 
 
   require 'ocr_space'
@@ -95,7 +97,10 @@ class Vehicle < ApplicationRecord
         color_name = carnet["objects"][0]["vehicleAnnotation"]["attributes"]["system"]["color"]["name"]
         plate_state = carnet["objects"][0]["vehicleAnnotation"]["licenseplate"]["attributes"]["system"]["region"]["name"]
 
-          @new_vehicle = Vehicle.create(:make => make_name, :model => model_name, :year => "", :plate => plate_num, :color => color_name, :background => plate_state, :user_id => current_user.id, :url => auto["url"], :public_id => auto["public_id"], :report_id => nil)
+          @user = current_user
+          @hood = Neighborhood.find_by_id(@user.neighborhood_id)
+
+          @new_vehicle = Vehicle.create(:make => make_name, :model => model_name, :year => "", :plate => plate_num, :color => color_name, :background => plate_state, :user_id => current_user.id, :url => auto["url"], :public_id => auto["public_id"], :neighborhood_id => current_user.neighborhood, :user => @user, :neighborhood => @hood)
       end
         @new_vehicle.save
   end
