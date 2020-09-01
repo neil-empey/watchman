@@ -1,7 +1,7 @@
 class Report < ApplicationRecord
   belongs_to :user
   belongs_to :neighborhood
-  has_many :report_comments
+  has_many :report_comments, dependent: :destroy
   has_many :comments, through: :report_comments
   has_many :users
   has_many :vehicles, through: :user

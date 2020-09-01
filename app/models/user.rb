@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :vehicles
   has_many :images
   has_many :reports
+  has_many :report_comments, dependent: :destroy
 
 
 

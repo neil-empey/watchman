@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-
-  resources :posts
-  resources :neighborhood_report_locations
   root 'sessions#welcome'
 
   get '/signup' => 'users#new'
@@ -37,7 +34,7 @@ Rails.application.routes.draw do
 
   get '/users/:user_id/comments' => 'comments#index'
 
-  put
+  post 'report_comments/:comment_id/comments' => 'report_comments#create'
 
   resources :reports
 
@@ -48,6 +45,8 @@ Rails.application.routes.draw do
   resources :neighborhoods do
     resources :reports, only: [:index]
     end
+
+
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

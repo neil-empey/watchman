@@ -106,6 +106,30 @@
        overflow: hidden;
      }
 
+      .button_like {
+        display: inline-block;
+        padding: 5px 21px;
+        font-size: 13px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        color: #fff;
+        background-color: #4CAF50;
+        border: none;
+        border-radius: 7px;
+        box-shadow: 0 4px #999;
+      }
+
+    .button_like:hover {background-color: #3e8e41}
+
+    .button_like:active {
+      background-color: #3e8e41;
+      box-shadow: 0 5px #666;
+      transform: translateY(5px);
+
+
+
    </style>
  </head>
 
@@ -209,6 +233,11 @@
    <% @comments.each_with_index do |comment, i| %>
    <p style="color:Indigo"> Neighbor <%= comment.user_id %> commented </p>
    <h5 style="color:DarkBlue"><%=%> <%= comment.content %> </h5>
+   <br>
+      <% @comment = comment %>
+   <%= button_to("report_comments/#{comment.id}/comments") %>
+
+
    <hr style="width:37%;height:1px;border-width:1px;color:gray;background-color:green">
    <br>
    <% end %>
