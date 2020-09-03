@@ -3,6 +3,4 @@ class ReportComments < ApplicationRecord
   belongs_to :comment
 
 
-
-
 end

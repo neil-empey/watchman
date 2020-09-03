@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_31_221931) do
+ActiveRecord::Schema.define(version: 2020_09_02_041914) do
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
@@ -90,9 +90,8 @@ ActiveRecord::Schema.define(version: 2020_08_31_221931) do
   create_table "report_comments", id: false, force: :cascade do |t|
     t.integer "report_id", null: false
     t.integer "comment_id", null: false
-    t.integer "like"
-    t.integer "dislike"
     t.integer "user_id"
+    t.boolean "like"
   end
 
   create_table "reports", force: :cascade do |t|

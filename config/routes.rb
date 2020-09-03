@@ -34,7 +34,8 @@ Rails.application.routes.draw do
 
   get '/users/:user_id/comments' => 'comments#index'
 
-  post 'report_comments/:comment_id/comments' => 'report_comments#create'
+  get '/report_comments/:id/new' => 'report_comments#new', as: "liked_comment"
+  post '/report_comments' => 'report_comments#create'
 
   resources :reports
 

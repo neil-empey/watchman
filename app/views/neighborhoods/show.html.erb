@@ -170,15 +170,15 @@
           <li> W</li>
           <hr style="height:3px;border-width:0;color:gray;background-color:gray">
            <li> A </li>
-           <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+           <hr style="height:2px;border-width:0;color:gray;background-color:blue">
            <li>  T </li>
            <hr style="height:3px;border-width:0;color:gray;background-color:gray">
            <li> C </li>
-           <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+           <hr style="height:2px;border-width:0;color:gray;background-color:blue">
            <li>  H </li>
            <hr style="height:3px;border-width:0;color:gray;background-color:gray">
            <li> M </li>
-           <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+           <hr style="height:2px;border-width:0;color:gray;background-color:blue">
            <li>  A </li>
            <hr style="height:3px;border-width:0;color:gray;background-color:gray">
            <li> N </li>
@@ -235,12 +235,14 @@
    <h5 style="color:DarkBlue"><%=%> <%= comment.content %> </h5>
    <br>
       <% @comment = comment %>
-   <%= button_to("report_comments/#{comment.id}/comments") %>
+      
+      <a class="button_like" href="/report_comments/<%= @comments[i].id %>/new">Like</a>
 
+    <hr style="width:37%;height:1px;border-width:1px;color:gray;background-color:green">
 
-   <hr style="width:37%;height:1px;border-width:1px;color:gray;background-color:green">
-   <br>
    <% end %>
+   <br>
+
    <a class="btn btn-primary" href="/reports/<%= report.id %>/comments/new">Add Comment</a>
    <br>
 

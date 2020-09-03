@@ -14,25 +14,31 @@ class CommentsController < ApplicationController
   def new
     @comment
     if params["id"] && @report = Report.find_by_id(params["id"])
+      if Comment.where(user_id: current_user.id, report_id: @report.id)
+        flash[:notice] = "Only one comment per report"
+        redirect_to "/neighborhoods/#{current_user.neighborhood.id}/users"
+        return
+      else
       render :new
-    else
-      @error = "Report is unavailable for comment" if params["id"]
+      end
     end
-  end
+  end   
 
   def create
       @comment = comments_params
-      if @comment.save
-        redirect_to "/neighborhoods/#{current_user.neighborhood.id}/users"
-      else
-        render :new
-      end
-    end
+      @comment.save
 
-    def show
-    end
+        redirect_to "/neighborhoods/#{current_user.neighborhood.id}/users"
+  end
+
+  def show
+  end
 
   private
+
+  def find_comment
+    @comment = Comment.find_by_id(comments_params["id"])
+  end
 
   def comments_params
     params.permit("authenticity_token", "content", "id", "commit")
