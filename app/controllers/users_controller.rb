@@ -2,8 +2,6 @@ class UsersController < ApplicationController
   include Secured
 
   layout "user", except: [:new]
-
-  skip_before_action :authorized, :only => [:new, :create]
   skip_before_action :require_login, :only => [:new, :create]
   skip_before_action :set_vars, :only => [:new, :create]
 
@@ -29,16 +27,15 @@ class UsersController < ApplicationController
       if @user.save
         session[:user_id] = @user.id
         redirect_to "/users/#{@user.id}"
-      else
-        render :new
-      end
+
     else
       flash[:error] = "User already exists, sigin please"
-      redirect_to 'signin'
+      render :new
     end
-  end
+   end
+ end
 
-  def show
+  def show 
     render :layout => "user"
    @user = User.find_by_id(params[:id])
   end

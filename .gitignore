@@ -37,6 +37,8 @@
 /config/initializers/auth0.rb
 /config/environments
 /config/initializers
+.env
+credentials.json
 
 /public/packs
 /public/packs-test

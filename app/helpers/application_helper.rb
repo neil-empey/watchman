@@ -8,10 +8,6 @@ module ApplicationHelper
     !current_user.nil?
   end
 
-  def authorized
-     return head(:forbidden) unless session.include? :user_id
-  end
-
   def cloud_search
     Cloudinary::Search
     .expression("folder=#{current_user.id}")

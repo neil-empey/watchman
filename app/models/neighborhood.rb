@@ -3,7 +3,7 @@ class Neighborhood < ApplicationRecord
   has_many :reports
   has_many :vehicles
   has_many :images
-  has_many :report_comments, through: :reports
+  has_many :likes, through: :users
 
   def new
   end

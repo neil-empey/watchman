@@ -145,6 +145,7 @@
 <div id="mainwrapper">
     <% @hood.reports.each_with_index do |report, i| %>
     <div class="innertube", style="color:DarkCyan;">
+      <% @report = report %>
          <% user = User.find_by_id(report.user_id) %>
          <h1>Neighborhood Report <%= report.id %>:   <%= report.address %></h1>
        </div>
@@ -223,7 +224,7 @@
    <br>
    <br>
    <div>
-   <h3 style="color:black;">Report: <%= report.id %> comments </h3>
+   <h3 style="color:blue;">Report: <%= report.id %> comments </h3>
    <br>
    <% @comments = Comment.select("content", "user_id").all_comments(report) %>
    <% if @comments.length < 1 %>
@@ -234,13 +235,13 @@
    <p style="color:Indigo"> Neighbor <%= comment.user_id %> commented </p>
    <h5 style="color:DarkBlue"><%=%> <%= comment.content %> </h5>
    <br>
-      <% @comment = comment %>
-      
-      <a class="button_like" href="/report_comments/<%= @comments[i].id %>/new">Like</a>
 
     <hr style="width:37%;height:1px;border-width:1px;color:gray;background-color:green">
 
    <% end %>
+   <br>
+
+   <%= button_to 'Like Report', "/reports/#{@report.id}/likes", method: :post, class: "button_like" %>
    <br>
 
    <a class="btn btn-primary" href="/reports/<%= report.id %>/comments/new">Add Comment</a>
@@ -249,6 +250,8 @@
 
 </div>
 
+
+ <h5 style="color:Lime"><%= @report.likes.count %> <%= (@report.likes.count) == 1 ? 'Like' : 'Likes'%></h5>
  <hr style="height:3px;border-width:1px;color:gray;background-color:DarkBlue">
  <br>
 <% end %>

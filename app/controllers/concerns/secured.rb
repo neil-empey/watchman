@@ -4,11 +4,7 @@ module Secured
   extend ActiveSupport::Concern
 
   included do
-    before_action :authorized, :require_login, :set_vars
-  end
-
-  def authorized
-     return head(:forbidden) unless session.include? :user_id
+    before_action :require_login, :set_vars
   end
 
   def require_login

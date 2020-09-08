@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   get '/users/:user_id/comments' => 'comments#index'
 
   get '/report_comments/:id/new' => 'report_comments#new', as: "liked_comment"
-  post '/report_comments' => 'report_comments#create'
+
 
   resources :reports
 
@@ -46,6 +46,10 @@ Rails.application.routes.draw do
   resources :neighborhoods do
     resources :reports, only: [:index]
     end
+
+  resources :reports do
+    resources :likes
+  end
 
 
 

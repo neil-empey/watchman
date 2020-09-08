@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   include Secured
 
   layout "welcome"
-  skip_before_action :authorized, :only => [:new, :create, :google_auth, :welcome]
+  skip_forgery_protection :only => [:google_auth]
   skip_before_action :require_login, :only => [:new, :create, :google_auth, :welcome]
   skip_before_action :set_vars, :only => [:new, :create, :google_auth, :welcome]
 
@@ -12,11 +12,12 @@ class SessionsController < ApplicationController
   end
 
   def google_auth
-    @user = User.find_or_create_by_omniauth(auth)
-    if @user.save
+    @user = User.find_or_create_by_omniauth(auth_hash)
+    if @user
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
+      flash[:notice] = "Please sign up no record found"
       render 'users/new'
     end
   end

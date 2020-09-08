@@ -12,17 +12,15 @@ class CommentsController < ApplicationController
   end
 
   def new
-    @comment
-    if params["id"] && @report = Report.find_by_id(params["id"])
-      if Comment.where(user_id: current_user.id, report_id: @report.id)
+    report = Report.find_by_id(params["id"])
+
+      if Comment.all.select {|comment| comment.user_id == current_user.id && comment.report_id == params["id"].to_i}.empty?
+        render :new
+      else
         flash[:notice] = "Only one comment per report"
         redirect_to "/neighborhoods/#{current_user.neighborhood.id}/users"
-        return
-      else
-      render :new
       end
-    end
-  end   
+  end
 
   def create
       @comment = comments_params

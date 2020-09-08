@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_02_041914) do
+ActiveRecord::Schema.define(version: 2020_09_03_221457) do
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
@@ -81,17 +81,20 @@ ActiveRecord::Schema.define(version: 2020_09_02_041914) do
     t.index ["user_id"], name: "index_images_on_user_id"
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.integer "report_id", null: false
+    t.integer "user_id", null: false
+    t.text "note"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["report_id"], name: "index_likes_on_report_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
   create_table "neighborhoods", force: :cascade do |t|
     t.string "location"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "report_comments", id: false, force: :cascade do |t|
-    t.integer "report_id", null: false
-    t.integer "comment_id", null: false
-    t.integer "user_id"
-    t.boolean "like"
   end
 
   create_table "reports", force: :cascade do |t|
@@ -139,6 +142,8 @@ ActiveRecord::Schema.define(version: 2020_09_02_041914) do
 
   add_foreign_key "comments", "users"
   add_foreign_key "images", "users"
+  add_foreign_key "likes", "reports"
+  add_foreign_key "likes", "users"
   add_foreign_key "reports", "users"
   add_foreign_key "users", "neighborhoods"
 end

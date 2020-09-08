@@ -31,6 +31,14 @@
 
              }
 
+             #special{
+               color #00060f;
+               margin: 25px; /* Padding for content */
+               margin-top: 5px;
+               margin-bottom: 35px;
+               overflow: hidden;
+             }
+
              #mainwrapper {
 
                overflow: hidden;
@@ -203,10 +211,6 @@
       </div>
     <br>
 
-
-
-
-
         <footer id="footer">
           <hr style="height:7px;border-width:0;color:gray;background-color:gray">
           <div class="innertube">
@@ -219,5 +223,19 @@
         <% end %>
         <br>
         <br>
+        <div id="special">
+          <% @user.reports.each do |report| %>
+          <% report.images.each do |image| %>
+          <h5 style="color:red"> Suspect Info </h5>
+          <p style="color:red"> <%= image.gender %> </p>
+          <p style="color:red"> Between the age of <%= image.age_low %> - <%= image.age_high %> </p>
+          <p style="color:red"> <%= image.label %> </p>
+          <% end %>
+          <% report.vehicles.each do |car| %>
+          <p style="color:red"> Be on the lookout for a <%= car.make %>, <%= car.model %>, <%= car.color %> with a <%= car.background %> plate with number <%= car.plate %>
+            <% end %>
+            <% end %>
+
+        </div>
 </body>
 </html>
