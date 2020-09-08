@@ -1,24 +1,3 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Welcome to Watchman. At this point all the technical pieces are included, but they are not link in associated ways that make them useful. i.e face recog isn't used in comparison with other users images. At this time the info is just stored in the database with some parameters being displayed. Please feel free to comment, I realize some may issues with this project and I hope they can see it from a purely technical standpoint.  
