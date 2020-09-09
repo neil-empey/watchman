@@ -82,13 +82,15 @@ img.zoom {
                <p style="color:SlateBlue"> Name: <%= "#{pic.name}" %> </p>
                <p style="color:SlateBlue"> Gender: <%= "#{pic.gender}" %> </p>
                <p style="color:SlateBlue"> Age Range: <%= "#{pic.age_low}" %> - <%= "#{pic.age_high}" %> </p>
-
-               <% if pic.label != "" %>
+              
+               <% if pic.label.length != 0 %>
                <p style="color:SlateBlue"> <%= "#{pic.label}" %> </p>
                 <% else %>
                <h5 style="color:red;">Label this image?</h5>
 
+
                <%= button_to "Add Label", "/images/#{pic.id}/edit", method: :get %>
+
 
 
                <% end %>

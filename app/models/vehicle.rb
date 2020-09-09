@@ -93,6 +93,7 @@ class Vehicle < ApplicationRecord
 
         make_name = carnet["objects"][0]["vehicleAnnotation"]["attributes"]["system"]["make"]["name"]
         model_name = carnet["objects"][0]["vehicleAnnotation"]["attributes"]["system"]["model"]["name"]
+        
         plate_num = carnet["objects"][0]["vehicleAnnotation"]["licenseplate"]["attributes"]["system"]["string"]["name"]
         color_name = carnet["objects"][0]["vehicleAnnotation"]["attributes"]["system"]["color"]["name"]
         plate_state = carnet["objects"][0]["vehicleAnnotation"]["licenseplate"]["attributes"]["system"]["region"]["name"]
@@ -100,7 +101,7 @@ class Vehicle < ApplicationRecord
           @user = current_user
           @hood = Neighborhood.find_by_id(@user.neighborhood_id)
 
-          @new_vehicle = Vehicle.create(:make => make_name, :model => model_name, :year => "", :plate => plate_num, :color => color_name, :background => plate_state, :user_id => current_user.id, :url => auto["url"], :public_id => auto["public_id"], :neighborhood_id => current_user.neighborhood, :user => @user, :neighborhood => @hood)
+          @new_vehicle = Vehicle.create(:make => make_name, :model => model_name, :year => "", :plate => plate_num, :color => color_name, :background => plate_state, :user_id => current_user.id, :url => auto["url"], :public_id => auto["public_id"], :neighborhood_id => current_user.neighborhood_id, :user => @user, :neighborhood => @hood)
       end
         @new_vehicle.save
   end

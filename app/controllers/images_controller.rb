@@ -29,7 +29,9 @@ class ImagesController < ApplicationController
     end
 
     def update
-      image_params
+      image = Image.find_by_id(image_params["id"])
+      image.label = image_params["label"]
+      image.save
       redirect_to '/images'
     end
 
@@ -48,8 +50,6 @@ class ImagesController < ApplicationController
 
       # Only allow a list of trusted parameters through.
       def image_params
-        params.permit("label", "id", "_method", "authenticity_token", "commit")
-        @image = Image.find_by_id(params["id"])
-        @image.label = params["label"]
+        params.permit("label", "id", "_method", "authenticity_token", "commit", "controller", "action")
       end
   end
