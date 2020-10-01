@@ -12,27 +12,35 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
-  validates :password, confirmation: true, length: { in: 6..20 }
-  validates :password_confirmation, presence: true
+  validates :password, presence: true
+  validates :password, length: { in: 6..200 }, on: :create
+
 
   def self.find_or_create_by_omniauth(auth)
+    where(id: auth.uid[0..7]).first_or_initialize do |user|
+      user.id ||= auth.uid
+      string = user.id.to_s
+      user.id = string[0..7].to_i
+      user.name = auth.info.name
+      user.email = auth.info.email
+      user.location = '00000'
+      if Neighborhood.find_by_id(user.location.to_i) == nil
+        @new_hood = Neighborhood.create(location: user.location)
+        @new_hood.id = @new_hood.location.to_i
+        @new_hood.save
+        user.neighborhood_id = user.location
+      else
+        @hood = Neighborhood.find_by_id(user.location.to_i)
+        user.neighborhood_id = @hood.id
+      end
 
-    @user = User.find_by(:email[auth.info.email])
-  # where(id: auth.uid).first_or_initialize do |user|
-  #   user.id ||= auth.uid
-  #   user.name = auth.info.name
-  #   user.email = auth.info.email
-  #
-  #   if !user.password_digest
-  #     pass = SecureRandom.hex(30)
-  #     user.password = pass
-  #     user.password_confirmation = pass
-  #   end
-  #
-  #   user.save
-  # end
+      if !user.password_digest
+        pass = SecureRandom.hex(30)
+        user.password = pass
+        user.password_confirmation = pass
+      end
 
-end
-
-
+      user.save(:validate => false)
+    end
+  end
 end

@@ -2,8 +2,8 @@ class UsersController < ApplicationController
   include Secured
 
   layout "user", except: [:new]
-  skip_before_action :require_login, :only => [:new, :create]
-  skip_before_action :set_vars, :only => [:new, :create]
+  skip_before_action :require_login, :only => [:new, :create, :user_params, :auth_hash, :show]
+  skip_before_action :set_vars, :only => [:new, :create, :user_params, :auth_hash, :show]
 
   def new
     @user = User.new
@@ -11,19 +11,18 @@ class UsersController < ApplicationController
 
   def create
     if User.find_by_email(user_params[:email]) == nil
-    @user = User.new(user_params)
-     if Neighborhood.find_by_id(user_params[:location]) == nil
-       @new_hood = Neighborhood.new(location: @user.location)
-       @new_hood.id = @new_hood.location
-       @new_hood.save
-       @user.neighborhood_id = @user.location
-       @user.save
-     else
-       @hood = Neighborhood.find_by_id(@user.location)
-       @user.neighborhood_id = @hood.id
-       @user.save
-     end
-
+      @user = User.new(user_params)
+      if Neighborhood.find_by_id(user_params[:location]) == nil
+        @new_hood = Neighborhood.new(location: @user.location)
+        @new_hood.id = @new_hood.location
+        @new_hood.save
+        @user.neighborhood_id = @user.location
+        @user.save
+      else
+        @hood = Neighborhood.find_by_id(@user.location)
+        @user.neighborhood_id = @hood.id
+        @user.save
+      end
       if @user.save
         session[:user_id] = @user.id
         redirect_to "/users/#{@user.id}"
@@ -35,7 +34,7 @@ class UsersController < ApplicationController
    end
  end
 
-  def show 
+  def show
     render :layout => "user"
    @user = User.find_by_id(params[:id])
   end
@@ -54,9 +53,5 @@ class UsersController < ApplicationController
   def auth_hash
     data = request.env['omniauth.auth']
     data
-  end
-
-  def require_login
-  redirect_to :root_path, notice: "Please log in or sign up" unless current_user
   end
 end

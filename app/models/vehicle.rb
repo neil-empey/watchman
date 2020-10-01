@@ -39,6 +39,7 @@ class Vehicle < ApplicationRecord
 
         response2 =  HTTParty.post("http://apipro1.ocr.space/parse/image", headers: header2, body: body2)
 
+
         data_ocr << response2["ParsedResults"][0]["ParsedText"]
 
         headers = {
@@ -58,6 +59,7 @@ class Vehicle < ApplicationRecord
       data["vehicles"] = data_v
       data["ocr"] = data_ocr
       data["carnet"] = data_carnet
+
 
       end
     end
@@ -88,12 +90,13 @@ class Vehicle < ApplicationRecord
         carnet = @info["carnet"][i]
         auto = @info["vehicles"][i]
         ocr = @info["ocr"][i]
+      
 
 
 
         make_name = carnet["objects"][0]["vehicleAnnotation"]["attributes"]["system"]["make"]["name"]
         model_name = carnet["objects"][0]["vehicleAnnotation"]["attributes"]["system"]["model"]["name"]
-        
+
         plate_num = carnet["objects"][0]["vehicleAnnotation"]["licenseplate"]["attributes"]["system"]["string"]["name"]
         color_name = carnet["objects"][0]["vehicleAnnotation"]["attributes"]["system"]["color"]["name"]
         plate_state = carnet["objects"][0]["vehicleAnnotation"]["licenseplate"]["attributes"]["system"]["region"]["name"]

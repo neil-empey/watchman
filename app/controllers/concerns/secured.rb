@@ -8,7 +8,7 @@ module Secured
   end
 
   def require_login
-  redirect_to :root_path, notice: "Please log in or sign up" unless current_user
+  redirect_to "/", notice: "Please log in or sign up" unless current_user
   end
 
   def set_vars

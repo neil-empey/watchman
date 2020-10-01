@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'
 
+  get '/addzip/:id/edit' => 'sessions#edit'
+  patch '/addzip/:id' => 'sessions#update'
+
   post '/logout' => 'sessions#destroy'
 
   get '/users/:id' => 'users#show'

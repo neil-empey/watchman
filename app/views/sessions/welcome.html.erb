@@ -9,5 +9,7 @@
       <% else %>
         <%= button_to "Login", '/signin', method: :get%>
         <%= button_to "Sign Up", '/signup', method: :get%>
+        <br>
+          <%= link_to "Sign Up or Login with Google", "/auth/google_oauth2", method: :post %>
       <%end%>
       <br>

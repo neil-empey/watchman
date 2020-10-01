@@ -1,11 +1,11 @@
 class ApplicationController < ActionController::Base
-  
+
   include ApplicationHelper
 
   private
 
   def require_login
-  redirect_to :root_path, notice: "Please log in or sign up" unless current_user
+  redirect_to "/", notice: "Please log in or sign up" unless current_user
   end
 
   helper_method :require_login
